@@ -1,0 +1,7 @@
+<div class="container mt-5 text-center">
+  <h1>RecordCollectionへようこそ</h1>
+  <p>ここはトップページです</p>
+   <% unless end_user_signed_in? %>
+    <li><%= link_to ' login', new_end_user_session_path %></li>
+  <% end %>
+</div>

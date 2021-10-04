@@ -1,0 +1,13 @@
+<div class="container text-center">
+  <h1>Record Collection</h1>
+  <nav>
+    <ul class="navbar-nav ml-auto">
+      <% if end_user_signed_in? %>
+        <li><%= link_to 'My Records', "#" %></li>
+        <li><%= link_to 'Search', "#" %></li>
+        <li><%= link_to 'DM', "#" %></li>
+        <li><%= link_to ' logout', destroy_end_user_session_path, method: :delete %></li>
+      <% end %>
+    </ul>
+  </nav>
+</div>
