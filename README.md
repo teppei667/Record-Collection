@@ -1,24 +1,49 @@
-# README
+## Record-Collection
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+- 自分のお気に入りのレコードコレクションを好きな写真やジャケットと共に投稿できます。
+- タイトルにその時の気持ちや好きなレコードのタイトルを付けてみても面白いかもしれないです。
+- 自分のコレクションは一覧でタイル上に表示されその一つ一つに感想や思い出を投稿していただけます。
+- 自分と同じ音楽性やデザイン感性を持っている人をフォローすることもでき、そこから新しい発見や出会いが生まれるかもしれません。
+- コメント機能を使用し自分が興味あるユーザーにコンタクトを撮ることも可能です。
+- お気に入り機能があり他人が投稿していて気になるレコードをお気に入りしておくことで後で確認することが可能です。
 
-Things you may want to cover:
 
-* Ruby version
+### サイトテーマ
+趣味100％の自分だけのレコード部屋を作れるアプリ
 
-* System dependencies
+### テーマを選んだ理由
+　自身がレコード好きなこともあってレコードに関連するアプリを開発したいなと考えていたところ、街の美容室やおしゃれな雑貨屋さん、古着屋さん等でレコードジャケットを店の雰囲気を作るためのインテリアの一部として飾られているのを思い出しました。
+音楽だけではなくジャケットとしての価値も高く、既存のものだけでなくジャケット風に作ったデザインや自分のレコードコレクションを投稿して、同じ音楽性やデザイン感性の人と繋がれたらいいなと思ったため、このアプリを作ろうと思いました。
 
-* Configuration
+### ターゲットユーザ
+- レコードやデザインが好きな全世代の人。
+- レコードそのものには興味がないけどジャケットデザインが好きな人。
+- 音楽、デザインに特化した投稿サイトを使ってみたい人
 
-* Database creation
+### 主な利用シーン
+- ちょっとこだわった写真を少しアーティスティックに保存しておきたい時
+- 同じ音楽性やデザイン感性を持っている人と繋がりたい
+- 自分だけのデザイン空間を作りたい
+- 自分の持っているレコードを確認したい時
 
-* Database initialization
+## 設計書
+- 詳細設計書
+https://docs.google.com/spreadsheets/d/1lsh1n_P7bqzhKy0XCjELkWWR3se2FkPy6mbjgakJXFY/edit?usp=sharing
+- テーブル定義書
+https://docs.google.com/spreadsheets/d/1g75pz2o5eTnyC2JmWimsH6YolS7KpA7tQpEC69W3xuw/edit?usp=sharing
 
-* How to run the test suite
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1oxLxzTv8Xu94t2oDhrZNAFuMqxBxsK4tR41LbwBJHo8/edit?usp=sharing
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Deployment instructions
-
-* ...
+### 著作権に関して
+- 利用規約を設けて法令を遵守するという趣旨の文言を加える（あくまでもサービスとしての場を提供していて法律は守るという内容）
+- お問い合わせフォームを設置してすぐに対応できるようにする
+- 写真なしでの投稿を可能にして、無しの場合こちらで用意したオリジナルの画像を表示させる
