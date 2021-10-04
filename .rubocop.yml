@@ -1,0 +1,32 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+# Rails用に最適化
+Rails:
+  Enabled: true
+
+# 文字数上限
+LineLength:
+  Max: 130
+  
+# devise
+Airbnb/ClassOrModuleDeclaredInWrongFile:
+  Exclude:
+    - 'app/controllers/EndUsers/*'
+
+Rails/HelperInstanceVariable:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+
+
+AllCops:
+# 除外フォルダ・除外ファイルを設定
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'node_modules/**/*'
+    - 'bin/*'
+    - '**/Gemfile'
+    - 'vendor/**/*'
+    - '.git/**/*'
