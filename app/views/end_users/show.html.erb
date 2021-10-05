@@ -1,2 +1,6 @@
-<h1>EndUsers#show</h1>
-<p>Find me in app/views/end_users/show.html.erb</p>
+<div class="container">
+  <h1>my profile</h1>
+  <%= @end_user.name %>
+  <%= @end_user.introduction %>
+  <%= link_to "編集", edit_end_user_path(@end_user.id) %>
+</div>

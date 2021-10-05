@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>新しいレコードをコレクションする</h1>
+
+  <%= form_with model: @record, local:true do |f| %>
+    <div class="form-group">
+      <%= attachment_image_tag @record, :image, fallback: "no-image.png", size:'100x100' %>
+        <label for="inputImage">ジャケットイメージ</label>
+      <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="form-group">
+      <%= f.label :アーティスト名 %>
+      <%= f.text_field :artist_name %>
+    </div>
+    <div class="form-group">
+      <%= f.label :感想 %>
+      <%= f.text_area :introduction %>
+    </div>
+    <div class="form-group">
+      <%= f.label :年 %>
+      <%= f.date_select :release_date, {:discard_month => true, :start_year => 1900, :end_year => 2021} %>
+    </div>
+      <%= f.label :ジャンル %>
+      <%= f.select :genre, [["pops"],["rock"],["black_music"],["edm"],["classic"],["jazz"]] %>
+    <div>
+      <%= f.hidden_field :end_user_id, :value => current_end_user.id %>
+      <%= f.submit :collection %>
+    </div>
+
+  <% end %>
+</div>

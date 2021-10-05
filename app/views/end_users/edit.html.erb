@@ -1,2 +1,17 @@
-<h1>EndUsers#edit</h1>
-<p>Find me in app/views/end_users/edit.html.erb</p>
+<div class="container">
+ <%= form_with model: @end_user, local: true do |f| %>
+   <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="form-group">
+      <%= f.label :自己紹介 %>
+      <%= f.text_area :introduction %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+    <%= f.submit :変更 %>
+ <% end %>
+</div>

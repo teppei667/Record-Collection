@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_04_045807) do
+ActiveRecord::Schema.define(version: 2021_10_04_085156) do
 
   create_table "end_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 2021_10_04_045807) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "artist_name", null: false
+    t.integer "genre", null: false
+    t.text "introduction", null: false
+    t.date "release_date", null: false
+    t.integer "end_user_id", null: false
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
