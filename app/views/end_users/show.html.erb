@@ -3,4 +3,6 @@
   <%= @end_user.name %>
   <%= @end_user.introduction %>
   <%= link_to "編集", edit_end_user_path(@end_user.id) %>
+
+  <%= link_to "お気に入り一覧", my_favorite_path(@end_user.id) %>
 </div>

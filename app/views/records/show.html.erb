@@ -24,4 +24,18 @@
     <% end %>
   </div>
 
+  <% if @record.favorited_by?(current_end_user) %>
+    <p>
+      <%= link_to record_favorites_path(@record.id), method: :delete do %>
+        ★
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to record_favorites_path(@record.id), method: :post do %>
+      ☆
+      <% end %>
+    </p>
+  <% end %>
+
 </div>
