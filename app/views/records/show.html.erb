@@ -7,3 +7,21 @@
   <%= @record.introduction %></br>
   <%= link_to "編集", edit_record_path(@record.id) %>
   <%= link_to "削除", record_path(@record.id), method: :delete %>
+
+  <div>
+    <%= form_with(model:[@record, @post_comment], local: true) do |f| %>
+      <%= f.text_area :comment, rows:'5', placeholder: "コメントを書いてください" %>
+      <%= f.submit "送信" %>
+    <% end %>
+  </div>
+
+  <div>
+    <% @post_comments.each do |post_comment| %>
+      <%= post_comment.comment %>
+      <% if post_comment.end_user == current_end_user %>
+        <%= link_to "削除", record_post_comment_path(post_comment.record.id, post_comment.id), method: :delete %>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

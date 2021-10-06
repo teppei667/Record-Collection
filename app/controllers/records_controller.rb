@@ -14,6 +14,8 @@ class RecordsController < ApplicationController
 
   def show
     @record = Record.find(params[:id])
+    @post_comment = PostComment.new
+    @post_comments = PostComment.where(record_id: @record.id)
   end
 
   def edit

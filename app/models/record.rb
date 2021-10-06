@@ -1,7 +1,7 @@
 class Record < ApplicationRecord
 
   belongs_to :end_user, optional: true
-
+  has_many :post_comments, dependent: :destroy
 
   attachment :image
 
