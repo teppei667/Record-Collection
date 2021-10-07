@@ -12,6 +12,7 @@ class EndUsersController < ApplicationController
     @end_user = EndUser.find(params[:id])
   end
 
+#current_end_userのお気に入り一覧ページ
   def my_favorite
     @end_user = EndUser.find(params[:id])
     favorites = Favorite.where(end_user_id: @end_user.id).pluck(:record_id)

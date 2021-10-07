@@ -1,8 +1,16 @@
 <div class="container">
-  <h1>my profile</h1>
+  <h1>profile</h1>
   <%= @end_user.name %>
   <%= @end_user.introduction %>
   <%= link_to "編集", edit_end_user_path(@end_user.id) %>
 
   <%= link_to "お気に入り一覧", my_favorite_path(@end_user.id) %>
+
+  <% if current_end_user.following?(@end_user) %>
+    <%= link_to "フォロー中", end_user_relationships_path(@end_user.id), method: :delete %>
+  <% else %>
+    <%= link_to "フォーロする", end_user_relationships_path(@end_user.id), method: :post %>
+  <% end %>
+  <%= link_to "フォロー", end_user_followings_path(@end_user.id) %>
+  <%= link_to "フォロワー", end_user_followers_path(@end_user.id) %>
 </div>

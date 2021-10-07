@@ -3,7 +3,7 @@
   <%= attachment_image_tag @record, :image, fallback: "no-image.png", size:'200x200' %></br>
   <%= @record.title %></br>
   <%= @record.artist_name %></br>
-  <%= @record.release_date %></br>
+  <%= @record.release_date.strftime("%Y") %></br>
   <%= @record.introduction %></br>
   <%= link_to "編集", edit_record_path(@record.id) %>
   <%= link_to "削除", record_path(@record.id), method: :delete %>
