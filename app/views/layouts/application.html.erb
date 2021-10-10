@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% if end_user_signed_in? %>
+      <%= render 'layouts/header' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

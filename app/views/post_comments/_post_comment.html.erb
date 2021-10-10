@@ -1,0 +1,7 @@
+
+    <% post_comments.each do |post_comment| %>
+      <%= post_comment.comment %>
+      <% if post_comment.end_user == current_end_user %>
+        <%= link_to "削除", record_post_comment_path(post_comment.record.id, post_comment.id), method: :delete, remote: true %>
+      <% end %>
+    <% end %>

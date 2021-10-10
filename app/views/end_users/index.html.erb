@@ -1,0 +1,6 @@
+<div class="container">
+  <%= link_to "record", records_path %></br>
+  <% @end_users.each do |end_user| %>
+    <%= link_to end_user.name, end_user_path(end_user.id) %>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  artist_name: MyString
+  genre: 1
+  introduction: MyText
+  release_date: 2021-10-04
+  user_id: 1
+
+two:
+  title: MyString
+  artist_name: MyString
+  genre: 1
+  introduction: MyText
+  release_date: 2021-10-04
+  user_id: 1

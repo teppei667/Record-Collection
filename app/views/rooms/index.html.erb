@@ -1,0 +1,18 @@
+<h2>メッセージ一覧</h2>
+<% @anotherEntries.each do |anotherEntry| %>
+  <table class="table table-striped">
+    <tr>
+      <td>
+        <%= link_to anotherEntry.end_user.name, room_path(anotherEntry.room.id) %>
+      </td>
+      <td>
+        <h6 style="color: #C0C0C0;"><%= anotherEntry.updated_at.strftime("%Y/%m/%d %H:%M") %></h6>
+      </td>
+      <td>
+        <%= link_to room_path(anotherEntry.room.id), method: :delete do %>
+          <i class="fas fa-trash" style="color: black;"></i>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+<% end %>
