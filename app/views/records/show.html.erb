@@ -9,33 +9,18 @@
   <%= link_to "削除", record_path(@record.id), method: :delete %>
 
   <div>
-    <%= form_with(model:[@record, @post_comment], local: true) do |f| %>
+    <%= form_with model:[@record, @post_comment] do |f| %>
       <%= f.text_area :comment, rows:'5', placeholder: "コメントを書いてください" %>
       <%= f.submit "送信" %>
     <% end %>
   </div>
 
-  <div>
-    <% @post_comments.each do |post_comment| %>
-      <%= post_comment.comment %>
-      <% if post_comment.end_user == current_end_user %>
-        <%= link_to "削除", record_post_comment_path(post_comment.record.id, post_comment.id), method: :delete %>
-      <% end %>
-    <% end %>
+  <div id="post_comment_<%= @record.id %>">
+    <%= render  partial: 'post_comments/post_comment', locals: { post_comments: @post_comments } %>
   </div>
 
-  <% if @record.favorited_by?(current_end_user) %>
-    <p>
-      <%= link_to record_favorites_path(@record.id), method: :delete do %>
-        ★
-      <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to record_favorites_path(@record.id), method: :post do %>
-      ☆
-      <% end %>
-    </p>
-  <% end %>
+  <div id="favorites_buttons_<%= @record.id %>">
+    <%= render partial: 'favorites/favorite', locals: { record: @record } %>
+  </div>
 
 </div>

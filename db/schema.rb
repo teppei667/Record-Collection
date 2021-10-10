@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_113112) do
+ActiveRecord::Schema.define(version: 2021_10_07_061011) do
+
+  create_table "direct_messages", force: :cascade do |t|
+    t.text "message"
+    t.integer "end_user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "end_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,6 +32,13 @@ ActiveRecord::Schema.define(version: 2021_10_06_113112) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "end_user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -56,6 +71,12 @@ ActiveRecord::Schema.define(version: 2021_10_06_113112) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id", null: false
     t.integer "followed_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

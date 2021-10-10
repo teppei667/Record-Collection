@@ -13,4 +13,23 @@
   <% end %>
   <%= link_to "フォロー", end_user_followings_path(@end_user.id) %>
   <%= link_to "フォロワー", end_user_followers_path(@end_user.id) %>
+  
+  <% if end_user_signed_in? %>
+    <% unless @end_user.id == current_end_user.id %>
+      <!--ルームが存在していれば既存のルームへ-->
+      <% if @isRoom == true %>
+        <%= link_to room_path(@roomId) do %>
+          <button id="dm_submit"><i class="fas fa-envelope"></i></button>
+        <% end %>
+      <!--ルームが存在していなければルームを作成する  -->
+      <% else %>
+        <%= form_for @room, url: rooms_path do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :end_user_id, :value=> @end_user.id %>
+          <% end %>
+          <button type="submit" id="dm_submit"><i class="fas fa-envelope"></i></button>
+        <% end %>  
+      <% end %>
+    <% end %>
+  <% end %>  
 </div>

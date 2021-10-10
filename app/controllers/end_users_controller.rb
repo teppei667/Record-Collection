@@ -10,6 +10,25 @@ class EndUsersController < ApplicationController
 
   def show
     @end_user = EndUser.find(params[:id])
+    #DM機能
+    if end_user_signed_in?
+      @currentEndUserEntry = Entry.where(end_user_id: current_end_user.id)
+      @endUserEntry = Entry.where(end_user_id: @end_user.id)
+      unless @end_user.id == current_end_user.id
+        @currentEndUserEntry.each do |c|
+          @endUserEntry.each do |e|
+            if c.room_id == e.room_id then
+              @isRoom = true
+              @roomId = c.room_id
+            end
+          end
+        end
+        unless @isRoom
+          @room = Room.new
+          @entry = Entry.new
+        end
+      end
+    end
   end
 
 #current_end_userのお気に入り一覧ページ

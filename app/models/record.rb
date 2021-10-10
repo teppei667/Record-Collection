@@ -7,9 +7,13 @@ class Record < ApplicationRecord
   attachment :image
 
   enum genre: { pops: 0, rock: 1, black_music: 2, edm: 3, classic: 4, jazz: 5 }
-  
+
+  #いいね済みかどうか確認する
   def favorited_by?(end_user)
     favorites.where(end_user_id: end_user.id).exists?
   end
 
+  def self.search(keyword)
+    where(["title like? OR introduction like? OR artist_name like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+  end
 end

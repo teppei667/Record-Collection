@@ -5,7 +5,7 @@
       <% if end_user_signed_in? %>
         <li><%= link_to 'My Records', mypage_path(current_end_user.id) %></li>
         <li><%= link_to 'Search', records_path %></li>
-        <li><%= link_to 'DM', "#" %></li>
+        <li><%= link_to 'DM', rooms_path %></li>
         <li><%= link_to ' logout', destroy_end_user_session_path, method: :delete %></li>
       <% end %>
     </ul>
