@@ -3,7 +3,10 @@
     <div>
       <%= image_tag 'main-logo.png', class: "img-fluid mt-5" %>
     </div>
-    <%= link_to image_tag("login-icon.png"), new_end_user_session_path %>
-    <li><%= link_to 'はじめる', new_end_user_registration_path %></li>
+    <div class="login">
+       <%= link_to image_tag("login-icon.png"), new_end_user_session_path %>
+       <%= link_to image_tag("sign-up-icon.png"), new_end_user_registration_path %>
+    </div>
+
   </div>
 </div>
