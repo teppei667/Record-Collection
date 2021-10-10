@@ -1,5 +1,7 @@
 document.addEventListener 'turbolinks:load', ->
-
+  
+  if App.room
+      App.cable.subscriptions.remove App.room
   App.room = App.cable.subscriptions.create { channel: "RoomChannel", room: $('#direct_messages').data('room_id') },
   connected: ->
 

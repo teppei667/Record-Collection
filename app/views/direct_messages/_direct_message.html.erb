@@ -11,7 +11,7 @@
 
 <!--メッセージの表示位置を指定する-->
 <script>
-  let direct_message = <%= direct_message.user.id %>;
+  let direct_message = <%= direct_message.end_user.id %>;
   let dm_user = document.getElementById('current_end_user');
   let current_end_user = dm_user.getAttribute('data-id')
   if(direct_message == current_end_user) {
