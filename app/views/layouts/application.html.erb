@@ -14,5 +14,8 @@
       <%= render 'layouts/header' %>
     <% end %>
     <%= yield %>
+    <% if end_user_signed_in? %>
+      <%= render 'layouts/footer' %>
+    <% end %>
   </body>
 </html>

@@ -1,15 +1,14 @@
-<div class="container text-center">
-  <div>
-    <%= image_tag 'main-logo.png', class: "img-fluid" %>
+<header>
+  <div class="container text-center mb-5">
+    <div>
+      <%= image_tag 'main-logo2.png', class: "img-fluid mt-3" %>
+    </div>
+    <nav>
+      <ul class="d-flex justify-content-around">
+        <li><%= link_to 'My Records', mypage_path(current_end_user.id), class: "menu" %></li>
+        <li><%= link_to 'Search', records_path, class: "menu" %></li>
+        <li><%= link_to 'DM', rooms_path, class: "menu" %></li>
+      </ul>
+    </nav>
   </div>
-  <nav>
-    <ul class="navbar-nav ml-auto">
-      <% if end_user_signed_in? %>
-        <li><%= link_to 'My Records', mypage_path(current_end_user.id) %></li>
-        <li><%= link_to 'Search', records_path %></li>
-        <li><%= link_to 'DM', rooms_path %></li>
-        <li><%= link_to ' logout', destroy_end_user_session_path, method: :delete %></li>
-      <% end %>
-    </ul>
-  </nav>
-</div>
+</header>

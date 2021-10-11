@@ -1,7 +1,7 @@
 class EndUsersController < ApplicationController
 
   def mypage
-    @records = Record.where(end_user_id: current_end_user.id)
+    @records = Record.where(end_user_id: current_end_user.id).order(created_at: :desc)
   end
 
   def index

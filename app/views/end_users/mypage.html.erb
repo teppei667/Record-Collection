@@ -1,10 +1,13 @@
 <div class="container">
-  <%= link_to "New Collect", new_record_path %>
-  <%= link_to "My profile", end_user_path(current_end_user.id) %>
-  <h1>自分のレコードコレクションを表示します</h1>
-  <% @records.each do |record| %>
-    <%= link_to record_path(record.id) do %>
-      <%= attachment_image_tag record, :image, fallback: "no-image.png", size:'200x200' %>
+  <div class="text-center mb-3">
+    <%= link_to image_tag("new-collection.png"), new_record_path, class: "img-fluid" %>
+  </div>
+  <div class="mb-5">
+    <% @records.each do |record| %>
+      <%= link_to record_path(record.id) do %>
+        <%= attachment_image_tag record, :image, fallback: "no-image.png", size:'200x200', class: "m-1" %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
 </div>
