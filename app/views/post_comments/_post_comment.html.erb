@@ -1,7 +1,14 @@
-
+    <h4 class="mb-3">コメント一覧</h4>
     <% post_comments.each do |post_comment| %>
-      <%= post_comment.comment %>
-      <% if post_comment.end_user == current_end_user %>
-        <%= link_to "削除", record_post_comment_path(post_comment.record.id, post_comment.id), method: :delete, remote: true %>
-      <% end %>
+      <div class="mb-3">
+        <%= link_to end_user_path(post_comment.end_user_id), class: "comment-contributor_name" do %>
+          <%= post_comment.end_user.name %>
+        <% end %>
+        <%= post_comment.comment %>
+        <% if post_comment.end_user == current_end_user %>
+          <%= link_to record_post_comment_path(post_comment.record.id, post_comment.id), method: :delete, remote: true do %>
+            <i class="far fa-trash-alt text-white"></i>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>

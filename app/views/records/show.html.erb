@@ -1,26 +1,37 @@
 <div class="container">
-  <%= link_to @record.end_user.name, end_user_path(@record.end_user_id) %></br>
-  <%= attachment_image_tag @record, :image, fallback: "no-image.png", size:'200x200' %></br>
-  <%= @record.title %></br>
-  <%= @record.artist_name %></br>
-  <%= @record.release_date.strftime("%Y") %></br>
-  <%= @record.introduction %></br>
-  <%= link_to "編集", edit_record_path(@record.id) %>
-  <%= link_to "削除", record_path(@record.id), method: :delete %>
-
-  <div>
-    <%= form_with model:[@record, @post_comment] do |f| %>
-      <%= f.text_area :comment, rows:'5', placeholder: "コメントを書いてください" %>
-      <%= f.submit "送信" %>
-    <% end %>
+  <div class="row">
+    <div class="col-6 text-center">
+      <h4><%= link_to @record.end_user.name, end_user_path(@record.end_user_id), class: "contributor_name" %></h4>
+      <p><%= attachment_image_tag @record, :image, fallback: "no-image.png", size:'300x300' %></p>
+      <% if @record.end_user == current_end_user %>
+        <%= link_to "編集", edit_record_path(@record.id), class: "text-white" %>
+        <%= link_to "削除", record_path(@record.id), method: :delete, class: "text-white" %>
+      <% end %>
+    </div>
+    <div class="col-6 text-white">
+      <h3><%= @record.title %></h3>
+      <h3><%= @record.artist_name %></h3>
+      <p><%= @record.release_date.strftime("%Y") %></p>
+      <p><%= @record.genre %></p>
+      <p><%= @record.introduction %></p>
+      <div id="favorites_buttons_<%= @record.id %>">
+        <%= render partial: 'favorites/favorite', locals: { record: @record } %>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5 mb-5">
+    <div class="col-6 text-center">
+      <%= form_with model:[@record, @post_comment] do |f| %>
+        <%= f.text_area :comment, rows:'5', placeholder: "コメント", class: "border-0 rounded" %>
+        <%= f.submit "送信", class: "btn btn-outline-light btn-sm" %>
+      <% end %>
+    </div>
+    <div class="col-6 text-white" id="post_comment_<%= @record.id %>">
+      <%= render  partial: 'post_comments/post_comment', locals: { post_comments: @post_comments } %>
+    </div>
   </div>
 
-  <div id="post_comment_<%= @record.id %>">
-    <%= render  partial: 'post_comments/post_comment', locals: { post_comments: @post_comments } %>
-  </div>
 
-  <div id="favorites_buttons_<%= @record.id %>">
-    <%= render partial: 'favorites/favorite', locals: { record: @record } %>
-  </div>
+
 
 </div>

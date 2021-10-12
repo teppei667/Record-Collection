@@ -1,34 +1,42 @@
-<div class="container">
-  <h1>新しいレコードをコレクションする</h1>
+<div class="container text-white text-center">
 
   <%= form_with model: @record, local:true do |f| %>
-    <div class="form-group">
-      <%= attachment_image_tag @record, :image, fallback: "no-image.png", size:'100x100' %>
-        <label for="inputImage">ジャケットイメージ</label>
-      <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
+    <div class="form-group form-group-lg mt-5">
+      <img id="preview" style="width:15%;">
+      <%= f.attachment_field :image, class: "col-form-label border-0 rounded-pill col-sm-6" %>
     </div>
-    <div class="form-group">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+    <div class="form-group form-group-lg mt-5">
+      <%= f.text_field :title, placeholder: "タイトル", class: "col-form-label border-0 rounded-pill col-sm-6" %>
     </div>
-    <div class="form-group">
-      <%= f.label :アーティスト名 %>
-      <%= f.text_field :artist_name %>
+    <div class="form-group form-group-lg mt-5">
+      <%= f.text_field :artist_name, placeholder: "アーティスト名", class: "col-form-label border-0 rounded-pill col-sm-6" %>
     </div>
-    <div class="form-group">
-      <%= f.label :感想 %>
-      <%= f.text_area :introduction %>
+    <div class="form-group form-group-lg mt-5">
+      <%= f.text_area :introduction, placeholder: "感想や思い出、詳細情報", class: "col-form-label border-0 rounded-pill col-sm-6" %>
     </div>
-    <div class="form-group">
-      <%= f.label :年 %>
-      <%= f.date_select :release_date, {:discard_month => true, :start_year => 1900, :end_year => 2021} %>
+    <div class="form-group form-group-lg mt-5">
+      <% t = Time.now %>
+      <%= f.date_select :release_date, {:discard_month => true, :start_year => 1900, :end_year => t.year}, class: "col-form-label border-0 rounded-pill col-sm-6" %>
     </div>
-      <%= f.label :ジャンル %>
-      <%= f.select :genre, [["pops"],["rock"],["black_music"],["edm"],["classic"],["jazz"]] %>
+    <div class="form-group form-group-lg mt-5">
+      <%= f.select :genre, [["pops"],["rock"],["black_music"],["edm"],["classic"],["jazz"]], { include_blank: 'ジャンル'}, {class: "col-form-label border-0 rounded-pill col-sm-6"} %>
+    </div>
     <div>
       <%= f.hidden_field :end_user_id, :value => current_end_user.id %>
-      <%= f.submit :collection %>
+      <%= image_submit_tag("collected-icon.png") %>
     </div>
 
   <% end %>
 </div>
+
+<img id="preview" style="width:40%;">
+
+<script>
+  $('#record_image').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+});
+</script>
