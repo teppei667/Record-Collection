@@ -1,12 +1,12 @@
  <% if record.favorited_by?(current_end_user) %>
     <p>
-      <%= link_to record_favorites_path(record.id), method: :delete, remote: true do %>
+      <%= link_to record_favorites_path(record.id), method: :delete, class: "text-white", remote: true do %>
         <i class="fas fa-star"></i>
       <% end %>
     </p>
   <% else %>
     <p>
-      <%= link_to record_favorites_path(record.id), method: :post, remote: true do %>
+      <%= link_to record_favorites_path(record.id), method: :post, class: "text-white", remote: true do %>
         <i class="far fa-star"></i>
       <% end %>
     </p>
