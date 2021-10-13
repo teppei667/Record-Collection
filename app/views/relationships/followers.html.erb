@@ -1,6 +1,15 @@
-<div class="container">
-  <h3>フォロワー</h3>
+<div class="container text-center mb-5">
+  <h3 class="mb-5">フォロワー一覧</h3>
   <% @end_users.each do |end_user| %>
-    <%= end_user.name %>
+    <div class="text-white text-center">
+      <%= attachment_image_tag end_user, :profile_image, fallback: "no-image.png", size: '80x80', class: "mr-5 rounded-circle" %>
+      <%= link_to end_user.name, end_user_path(end_user.id) , class: "mr-3" %>
+      <%= end_user.introduction %>
+      <% if current_end_user.following?(end_user) %>
+        <%= link_to "フォロー中", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-outline-light btn-sm ml-3" %>
+      <% else %>
+        <%= link_to "フォーロする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-light btn-sm ml-3" %>
+      <% end %>
+    </div>
   <% end %>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_07_061011) do
+ActiveRecord::Schema.define(version: 2021_10_13_014927) do
 
   create_table "direct_messages", force: :cascade do |t|
     t.text "message"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_10_07_061011) do
     t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "profile_image_id"
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end

@@ -1,17 +1,32 @@
-<div class="container">
+<div class="container text-white text-center">
  <%= form_with model: @end_user, local: true do |f| %>
-   <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+   <div class="form-group form-group-lg mt-5">
+     <img id="preview" style="width:20%;">
+     <%= attachment_image_tag @end_user, :profile_image, fallback: "no-image2.jpg", size: '200x150', id: "existing_file" %>
+     <%= f.attachment_field :profile_image %>
+   </div>
+   <div class="form-group form-group-lg mt-5">
+      <%= f.text_field :name, class: "col-form-label border-0 rounded-pill col-sm-6" %>
     </div>
-    <div class="form-group">
-      <%= f.label :自己紹介 %>
-      <%= f.text_area :introduction %>
+    <div class="form-group form-group-lg mt-5">
+      <%= f.text_area :introduction, class: "col-form-label border-0 rounded-pill col-sm-6" %>
     </div>
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email %>
+    <div class="form-group form-group-lg mt-5">
+      <%= f.email_field :email, class: "col-form-label border-0 rounded-pill col-sm-6" %>
     </div>
-    <%= f.submit :変更 %>
+    <div>
+      <%= image_submit_tag("change-icon.png") %>
+    </div>
  <% end %>
 </div>
+
+<script>
+  $('#end_user_profile_image').on('change', function (e) {
+    let reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+        $("#existing_file").hide();
+    }
+    reader.readAsDataURL(e.target.files[0]);
+});
+</script>

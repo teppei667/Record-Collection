@@ -10,6 +10,8 @@ class EndUsersController < ApplicationController
 
   def show
     @end_user = EndUser.find(params[:id])
+    @records = Record.order(created_at: :desc).limit(9)
+    @my_favorites = Favorite.where(end_user_id: current_end_user.id).limit(6)
     #DM機能
     if end_user_signed_in?
       @currentEndUserEntry = Entry.where(end_user_id: current_end_user.id)
@@ -50,6 +52,6 @@ class EndUsersController < ApplicationController
   private
 
   def end_user_params
-    params.require(:end_user).permit(:name, :introduction, :email)
+    params.require(:end_user).permit(:name, :introduction, :email, :profile_image)
   end
 end

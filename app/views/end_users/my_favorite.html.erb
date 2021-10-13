@@ -2,7 +2,7 @@
   <h3>お気に入り一覧</h3>
     <% @favorite_records.each do |favorites_record| %>
       <%= link_to record_path(favorites_record.id) do %>
-       <%= attachment_image_tag favorites_record, :image, fallback: "no-image.png", size:'200x200' %>
+       <%= attachment_image_tag favorites_record, :image, fallback: "no-image.png", size:'200x200', class: "m-2" %>
       <% end %>
     <% end %>
 </div>
