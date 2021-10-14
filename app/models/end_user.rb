@@ -4,6 +4,8 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  attachment :profile_image
+
   has_many :records, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -29,5 +31,9 @@ class EndUser < ApplicationRecord
 
   def following?(end_user)
     followings.include?(end_user)
+  end
+
+  def self.end_user_search(keyword)
+    where(["name like?", "%#{keyword}%"])
   end
 end

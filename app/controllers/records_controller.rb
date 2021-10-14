@@ -3,8 +3,8 @@ class RecordsController < ApplicationController
     @records = Record.all.order(created_at: :desc)
   end
 
-  def search
-    @records = Record.search(params[:keyword])
+  def record_search
+    @records = Record.record_search(params[:keyword])
     @keyword = params[:keyword]
     render "index"
   end

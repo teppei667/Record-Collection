@@ -23,18 +23,15 @@
       <%= f.select :genre, [["pops"],["rock"],["black_music"],["edm"],["classic"],["jazz"]], { include_blank: 'ジャンル'}, {class: "col-form-label border-0 rounded-pill col-sm-6"} %>
     </div>
     <div>
-      <%= f.hidden_field :end_user_id, :value => current_end_user.id %>
-      <%= image_submit_tag("collected-icon.png") %>
+      <%= image_submit_tag("change-icon.png") %>
     </div>
 
   <% end %>
 </div>
 
-<img id="preview" style="width:40%;">
-
 <script>
   $('#record_image').on('change', function (e) {
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = function (e) {
         $("#preview").attr('src', e.target.result);
         $("#existing_file").hide();
