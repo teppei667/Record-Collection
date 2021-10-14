@@ -1,6 +1,6 @@
 <div class="container text-center">
-  <%= link_to "user", end_users_path %></br>
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
+  <h4><%= link_to "user", end_users_path %></br></h4>
+    <%= form_with url: record_search_path, method: :get, local: true do |f| %>
       <div class="text-right form-group form-group-lg">
         <%= f.text_field :keyword, value: @keyword, class: "col-form-label border-0 rounded-pill col-sm-4" %>
         <%= f.submit "検索", class: "btn btn-outline-light" %>

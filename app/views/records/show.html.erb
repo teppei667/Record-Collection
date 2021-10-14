@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-6 text-center">
-      <h4><%= link_to @record.end_user.name, end_user_path(@record.end_user_id), class: "contributor_name" %></h4>
+      <div class="mb-3">
+        <%= link_to end_user_path(@record.end_user_id), class: "contributor_name" do %>
+        <%= attachment_image_tag @record.end_user, :profile_image, fallback: "no-image2.jpg", size:'50x50', class: "rounded-circle" %>
+        <% end %>
+        <%= link_to @record.end_user.name, end_user_path(@record.end_user_id), class: "contributor_name" %>
+      </div>
       <p><%= attachment_image_tag @record, :image, fallback: "no-image.png", size:'300x300' %></p>
       <% if @record.end_user == current_end_user %>
         <%= link_to "編集", edit_record_path(@record.id), class: "text-white" %>

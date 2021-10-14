@@ -8,10 +8,16 @@ class EndUsersController < ApplicationController
     @end_users = EndUser.all
   end
 
+  def end_user_search
+    @end_users = EndUser.end_user_search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   def show
     @end_user = EndUser.find(params[:id])
-    @records = Record.order(created_at: :desc).limit(9)
-    @my_favorites = Favorite.where(end_user_id: current_end_user.id).limit(6)
+    @records = Record.where(end_user_id: @end_user.id).order(created_at: :desc).limit(6)
+    @my_favorites = Favorite.where(end_user_id: current_end_user.id)
     #DM機能
     if end_user_signed_in?
       @currentEndUserEntry = Entry.where(end_user_id: current_end_user.id)

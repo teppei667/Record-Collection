@@ -32,4 +32,8 @@ class EndUser < ApplicationRecord
   def following?(end_user)
     followings.include?(end_user)
   end
+
+  def self.end_user_search(keyword)
+    where(["name like?", "%#{keyword}%"])
+  end
 end
