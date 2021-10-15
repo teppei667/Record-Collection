@@ -3,7 +3,7 @@
     <nav>
       <ul class="d-flex justify-content-end no-opacity">
         <li><%= link_to "My profile", end_user_path(current_end_user.id), class: "menu ml-3" %></li>
-        <li><%= link_to 'logput', destroy_end_user_session_path, method: :delete, class: "menu ml-3" %></li>
+        <li><%= link_to 'logout', destroy_end_user_session_path, method: :delete, class: "menu ml-3" %></li>
         <li><%= link_to '利用規約', "#", class: "menu ml-3" %></li>
         <li><%= link_to 'お問い合わせ', new_contact_path, class: "menu ml-3" %></li>
       </ul>

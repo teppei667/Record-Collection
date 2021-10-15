@@ -1,18 +1,28 @@
-<h2>メッセージ一覧</h2>
-<% @anotherEntries.each do |anotherEntry| %>
-  <table class="table table-striped">
-    <tr>
-      <td>
-        <%= link_to anotherEntry.end_user.name, room_path(anotherEntry.room.id) %>
-      </td>
-      <td>
-        <h6 style="color: #C0C0C0;"><%= anotherEntry.updated_at.strftime("%Y/%m/%d %H:%M") %></h6>
-      </td>
-      <td>
-        <%= link_to room_path(anotherEntry.room.id), method: :delete do %>
-          <i class="fas fa-trash" style="color: black;"></i>
-        <% end %>
-      </td>
-    </tr>
-  </table>
-<% end %>
+<div class="container">
+  <h2>メッセージ一覧</h2>
+  <% @anotherEntries.each do |anotherEntry| %>
+    <table class="table table-striped">
+      <tr>
+        <td>
+          <%= link_to room_path(anotherEntry.room.id) do %>
+            <%= attachment_image_tag anotherEntry.end_user, :profile_image, fallback: "no-image.png", size: '60x60', class: "rounded-circle" %>
+          <% end %>
+          <%= link_to anotherEntry.end_user.name, room_path(anotherEntry.room.id) %>
+        </td>
+        <td class="text-white">
+         <!-- 最新メッセージ内容の最初の7文字を表示する -->
+          <% dm = DirectMessage.find_by(id: anotherEntry.room.direct_message_ids.last).message %>
+          <%= truncate(dm, length: 10) %>
+        </td>
+        <td>
+          <h6 style="color: #C0C0C0;"><%= anotherEntry.updated_at.strftime("%Y/%m/%d %H:%M") %></h6>
+        </td>
+        <td>
+          <%= link_to room_path(anotherEntry.room.id), method: :delete do %>
+            <i class="fas fa-trash" style="color: white;"></i>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>
