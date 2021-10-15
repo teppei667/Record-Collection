@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'homes#top'
+  get 'contact_us' => 'homes#contact_us'
   devise_for :end_users
   resources :end_users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]

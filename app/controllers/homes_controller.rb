@@ -5,4 +5,7 @@ class HomesController < ApplicationController
       redirect_to mypage_path(current_end_user.id)
     end
   end
+  
+  def contact_us
+  end
 end

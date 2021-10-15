@@ -1,19 +1,19 @@
-<p class="<%= direct_message.id %>">
-  <%= direct_message.end_user.name %>
-</p>
+  <p class="<%= direct_message.id %> chat-bg">
+    <%= attachment_image_tag direct_message.end_user, :profile_image, fallback: "no_image2.jpg", class:"rounded-circle", size: "40x40" %>
+  </p>
 
-<p class="<%= direct_message.id %>">
-  <span class="baloon1-top">
-    <h7 class="dm_content"><%= direct_message.message %></h7><br>
-    <h7><%= direct_message.created_at.strftime("%Y/%m/%d %H:%M") %></h7>
-  </span>
-</p>
+  <p class="<%= direct_message.id %> chat-bg">
+    <span class="baloon1-top">
+      <h7 class="dm_content"><%= direct_message.message %></h7><br>
+      <h7><%= direct_message.created_at.strftime("%Y/%m/%d %H:%M") %></h7>
+    </span>
+  </p>
 
 <!--メッセージの表示位置を指定する-->
 <script>
-  let direct_message = <%= direct_message.end_user.id %>;
-  let dm_user = document.getElementById('current_end_user');
-  let current_end_user = dm_user.getAttribute('data-id')
+  var direct_message = <%= direct_message.end_user.id %>;
+  var dm_user = document.getElementById('current_end_user');
+  var current_end_user = dm_user.getAttribute('data-id')
   if(direct_message == current_end_user) {
     $('p.' + <%= direct_message.id %>).css('text-align', 'right');
   }else{
