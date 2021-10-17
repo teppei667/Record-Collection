@@ -94,4 +94,18 @@ Rails.application.configure do
   config.action_cable.url = 'wss://52.193.247.160/cable'
   config.action_cable.allowed_request_origins = [ 'http://52.193.247.160']
   ActionCable.server.config.disable_request_forgery_protection = true
+
+  mail = ENV['SECRET_EMAIL']
+  password = ENV['SECRET_PASWORD']
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      port: '587',
+      address: 'smtp.gmail.com',
+      domain: 'gmail.com',
+      user_name: mail,
+      password: password,
+      authentication: 'plain',
+      enable_starttls_auto: true
+  }
 end
