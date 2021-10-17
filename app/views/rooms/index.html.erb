@@ -10,9 +10,13 @@
           <%= link_to anotherEntry.end_user.name, room_path(anotherEntry.room.id) %>
         </td>
         <td class="text-white">
-         <!-- 最新メッセージ内容の最初の7文字を表示する -->
-          <% dm = DirectMessage.find_by(id: anotherEntry.room.direct_message_ids.last).message %>
-          <%= truncate(dm, length: 10) %>
+          <!-- 最新メッセージ内容の最初の7文字を表示する -->
+          <% if anotherEntry.room.direct_message_ids.present? %>
+            <% dm = DirectMessage.find_by(id: anotherEntry.room.direct_message_ids.last).message %>
+            <%= truncate(dm, length: 10) %>
+          <% else %>
+            <p class="text-danger">メッセージを送信しまよう</p>
+          <% end %>
         </td>
         <td>
           <h6 style="color: #C0C0C0;"><%= anotherEntry.updated_at.strftime("%Y/%m/%d %H:%M") %></h6>
