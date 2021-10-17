@@ -13,11 +13,11 @@ class EndUser < ApplicationRecord
   has_many :direct_messages
   has_many :rooms, through: :entries
 
-  #自分がフォローされる側
+  # 自分がフォローされる側
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  #自分がフォローする側
+  # 自分がフォローする側
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  #フォロー、フォロワー一覧機能実装の為
+  # フォロー、フォロワー一覧機能実装の為
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 

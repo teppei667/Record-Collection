@@ -1,5 +1,4 @@
 class PostCommentsController < ApplicationController
-
   def create
     @record = Record.find(params[:record_id])
     comment = PostComment.new(post_comment_params)
@@ -7,7 +6,6 @@ class PostCommentsController < ApplicationController
     comment.record_id = @record.id
     comment.save
     @post_comments = PostComment.where(record_id: @record.id).order(created_at: :desc)
-
   end
 
   def destroy

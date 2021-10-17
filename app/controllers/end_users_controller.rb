@@ -1,5 +1,4 @@
 class EndUsersController < ApplicationController
-
   def mypage
     @records = Record.where(end_user_id: current_end_user.id).order(created_at: :desc)
   end
@@ -18,20 +17,20 @@ class EndUsersController < ApplicationController
     @end_user = EndUser.find(params[:id])
     @records = Record.where(end_user_id: @end_user.id).order(created_at: :desc).limit(6)
     @my_favorites = Favorite.where(end_user_id: current_end_user.id)
-    #DM機能
+    # DM機能
     if end_user_signed_in?
-      @currentEndUserEntry = Entry.where(end_user_id: current_end_user.id)
-      @endUserEntry = Entry.where(end_user_id: @end_user.id)
+      @current_end_user_entry = Entry.where(end_user_id: current_end_user.id)
+      @end_user_entry = Entry.where(end_user_id: @end_user.id)
       unless @end_user.id == current_end_user.id
-        @currentEndUserEntry.each do |c|
-          @endUserEntry.each do |e|
-            if c.room_id == e.room_id then
-              @isRoom = true
-              @roomId = c.room_id
+        @current_end_user_entry.each do |c|
+          @end_user_entry.each do |e|
+            if c.room_id == e.room_id
+              @is_room = true
+              @room_id = c.room_id
             end
           end
         end
-        unless @isRoom
+        unless @is_room
           @room = Room.new
           @entry = Entry.new
         end
@@ -39,7 +38,7 @@ class EndUsersController < ApplicationController
     end
   end
 
-#current_end_userのお気に入り一覧ページ
+  # current_end_userのお気に入り一覧ページ
   def my_favorite
     @end_user = EndUser.find(params[:id])
     favorites = Favorite.where(end_user_id: @end_user.id).pluck(:record_id)
@@ -51,8 +50,8 @@ class EndUsersController < ApplicationController
   end
 
   def update
-   end_user = EndUser.find(params[:id])
-   end_user.update(end_user_params) ? (redirect_to end_user_path(end_user.id)) : (render :edit)
+    end_user = EndUser.find(params[:id])
+    end_user.update(end_user_params) ? (redirect_to end_user_path(end_user.id)) : (render :edit)
   end
 
   private

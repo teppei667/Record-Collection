@@ -7,6 +7,7 @@ module ApplicationCable
     end
 
     protected
+
     def find_verified_end_user
       verified_end_user = EndUser.find_by(id: env['warden'].user.id)
       return reject_unauthorized_connection unless verified_end_user

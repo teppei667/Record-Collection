@@ -15,5 +15,4 @@ class EndUsersControllerTest < ActionDispatch::IntegrationTest
     get end_users_edit_url
     assert_response :success
   end
-
 end

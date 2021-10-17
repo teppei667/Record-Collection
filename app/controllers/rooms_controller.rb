@@ -1,13 +1,12 @@
 class RoomsController < ApplicationController
-
   def index
     @end_user = current_end_user
-    @currentEntries = @end_user.entries
-    myRoomIds = []
-    @currentEntries.each do |entry|
-      myRoomIds << entry.room.id
+    @current_entries = @end_user.entries
+    my_room_ids = []
+    @current_entries.each do |entry|
+      my_room_ids << entry.room.id
     end
-    @anotherEntries = Entry.where(room_id: myRoomIds).where.not(end_user_id: @end_user.id).order(created_at: :desc)
+    @another_entries = Entry.where(room_id: my_room_ids).where.not(end_user_id: @end_user.id).order(created_at: :desc)
   end
 
   def show
@@ -32,5 +31,4 @@ class RoomsController < ApplicationController
     room.destroy
     redirect_to request.referer
   end
-
 end

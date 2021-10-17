@@ -45,4 +45,3 @@ class RecordsController < ApplicationController
     params.require(:record).permit(:title, :image, :artist_name, :genre, :introduction, :release_date, :end_user_id)
   end
 end
-
