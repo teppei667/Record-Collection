@@ -91,4 +91,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_cable.url = 'wss://52.193.247.160/cable'
+  config.action_cable.allowed_request_origins = [ 'http://52.193.247.160']
+  ActionCable.server.config.disable_request_forgery_protection = true
 end
