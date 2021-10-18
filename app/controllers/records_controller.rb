@@ -1,4 +1,7 @@
 class RecordsController < ApplicationController
+
+  before_action :authenticate_end_user!
+
   def index
     @records = Record.all.order(created_at: :desc)
   end
@@ -29,8 +32,8 @@ class RecordsController < ApplicationController
   end
 
   def update
-    record = Record.find(params[:id])
-    record.update(record_params) ? (redirect_to record_path(record.id)) : (render :edit)
+    @record = Record.find(params[:id])
+    @record.update(record_params) ? (redirect_to record_path(@record.id)) : (render :edit)
   end
 
   def destroy

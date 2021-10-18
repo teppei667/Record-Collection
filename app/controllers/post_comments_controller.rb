@@ -1,4 +1,7 @@
 class PostCommentsController < ApplicationController
+  
+  before_action :authenticate_end_user!
+  
   def create
     @record = Record.find(params[:record_id])
     comment = PostComment.new(post_comment_params)

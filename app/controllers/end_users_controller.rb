@@ -1,4 +1,8 @@
 class EndUsersController < ApplicationController
+
+  before_action :authenticate_end_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :my_favorite]
+
   def mypage
     @records = Record.where(end_user_id: current_end_user.id).order(created_at: :desc)
   end
@@ -50,8 +54,8 @@ class EndUsersController < ApplicationController
   end
 
   def update
-    end_user = EndUser.find(params[:id])
-    end_user.update(end_user_params) ? (redirect_to end_user_path(end_user.id)) : (render :edit)
+    @end_user = EndUser.find(params[:id])
+    @end_user.update(end_user_params) ? (redirect_to end_user_path(@end_user.id)) : (render :edit)
   end
 
   private
@@ -59,4 +63,12 @@ class EndUsersController < ApplicationController
   def end_user_params
     params.require(:end_user).permit(:name, :introduction, :email, :profile_image)
   end
+
+  def ensure_correct_user
+    @end_user = EndUser.find(params[:id])
+    if @end_user != current_end_user
+      redirect_to mypage_path(current_end_user.id)
+    end
+  end
+
 end

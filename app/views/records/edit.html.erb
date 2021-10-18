@@ -1,26 +1,28 @@
 <div class="container text-white text-center">
 
+  <%= render 'records/error_message' %>
+
   <%= form_with model: @record, local:true do |f| %>
     <div class="form-group form-group-lg mt-5">
       <img id="preview" style="width:15%;">
       <%= attachment_image_tag @record, :image, fallback: "no-image.png", size: '180x180', id: "existing_file" %>
-      <%= f.attachment_field :image, class: "col-form-label border-0 rounded-pill col-sm-6" %>
+      <%= f.attachment_field :image, class: "col-form-label rounded-pill col-sm-6" %>
     </div>
     <div class="form-group form-group-lg mt-5">
-      <%= f.text_field :title, placeholder: "タイトル", class: "col-form-label border-0 rounded-pill col-sm-6" %>
+      <%= f.text_field :title, placeholder: "タイトル", class: "col-form-label rounded-pill col-sm-6" %>
     </div>
     <div class="form-group form-group-lg mt-5">
-      <%= f.text_field :artist_name, placeholder: "アーティスト名", class: "col-form-label border-0 rounded-pill col-sm-6" %>
+      <%= f.text_field :artist_name, placeholder: "アーティスト名", class: "col-form-label rounded-pill col-sm-6" %>
     </div>
     <div class="form-group form-group-lg mt-5">
-      <%= f.text_area :introduction, placeholder: "感想や思い出、詳細情報", class: "col-form-label border-0 rounded-pill col-sm-6" %>
+      <%= f.text_area :introduction, placeholder: "感想や思い出、詳細情報", class: "col-form-label rounded-pill col-sm-6" %>
     </div>
     <div class="form-group form-group-lg mt-5">
       <% t = Time.now %>
-      <%= f.date_select :release_date, {:discard_month => true, :start_year => 1900, :end_year => t.year}, class: "col-form-label border-0 rounded-pill col-sm-6" %>
+      <%= f.date_select :release_date, {:discard_month => true, :start_year => 1900, :end_year => t.year}, class: "col-form-label rounded-pill col-sm-6" %>
     </div>
     <div class="form-group form-group-lg mt-5">
-      <%= f.select :genre, [["pops"],["rock"],["black_music"],["edm"],["classic"],["jazz"]], { include_blank: 'ジャンル'}, {class: "col-form-label border-0 rounded-pill col-sm-6"} %>
+      <%= f.select :genre, [["pops"],["rock"],["black_music"],["edm"],["classic"],["jazz"]], { include_blank: 'ジャンル'}, {class: "col-form-label rounded-pill col-sm-6"} %>
     </div>
     <div>
       <%= image_submit_tag("change-icon.png") %>

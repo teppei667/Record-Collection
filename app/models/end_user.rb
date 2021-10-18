@@ -20,6 +20,9 @@ class EndUser < ApplicationRecord
   # フォロー、フォロワー一覧機能実装の為
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+  
+  validates :name, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :introduction, length: { maximum: 500 }
 
   def follow(end_user_id)
     relationships.create(followed_id: end_user_id)

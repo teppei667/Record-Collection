@@ -3,6 +3,13 @@ class Record < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  validates :title, presence: true, length: { minimum: 2, maximum: 50 }
+  validates :artist_name, presence: true, length: { minimum: 2, maximum: 50 }
+  validates :genre, presence: true
+  validates :introduction, presence: true, length: { minimum: 2, maximum: 500 }
+  validates :release_date, presence: true
+
+
   attachment :image
 
   enum genre: { pops: 0, rock: 1, black_music: 2, edm: 3, classic: 4, jazz: 5 }

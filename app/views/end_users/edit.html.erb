@@ -1,4 +1,7 @@
 <div class="container text-white text-center">
+
+  <%= render 'end_users/error_message' %>
+
  <%= form_with model: @end_user, local: true do |f| %>
    <div class="form-group form-group-lg mt-5">
      <img id="preview" style="width:20%;">
@@ -6,13 +9,13 @@
      <%= f.attachment_field :profile_image %>
    </div>
    <div class="form-group form-group-lg mt-5">
-      <%= f.text_field :name, class: "col-form-label border-0 rounded-pill col-sm-6" %>
+      <%= f.text_field :name, class: "col-form-label rounded-pill col-sm-6" %>
     </div>
     <div class="form-group form-group-lg mt-5">
-      <%= f.text_area :introduction, class: "col-form-label border-0 rounded-pill col-sm-6" %>
+      <%= f.text_area :introduction, class: "col-form-label rounded-pill col-sm-6" %>
     </div>
     <div class="form-group form-group-lg mt-5">
-      <%= f.email_field :email, class: "col-form-label border-0 rounded-pill col-sm-6" %>
+      <%= f.email_field :email, class: "col-form-label rounded-pill col-sm-6" %>
     </div>
     <div>
       <%= image_submit_tag("change-icon.png") %>

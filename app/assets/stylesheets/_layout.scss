@@ -4,6 +4,24 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+
+  .field_with_errors {
+   input {
+    border: solid 4px red;
+   }
+
+   textarea {
+    border: solid 4px red;
+   }
+
+   select {
+    border: solid 4px red;
+   }
+  }
+
+  .error-message {
+    color: red;
+   }
 }
 
 .menu {
