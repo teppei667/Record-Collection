@@ -3,12 +3,19 @@
     <div>
       <%= image_tag 'main-logo2.png', class: "img-fluid mt-3" %>
     </div>
-    <nav>
-      <ul class="d-flex justify-content-around">
-        <li><%= link_to 'My Records', mypage_path(current_end_user.id), class: "menu" %></li>
-        <li><%= link_to 'Search', records_path, class: "menu" %></li>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li><%= link_to 'My Records', mypage_path(current_end_user.id), class: "menu" %></li>
+          <li><%= link_to 'Search', records_path, class: "menu" %></li>
         <li><%= link_to 'DM', rooms_path, class: "menu" %></li>
-      </ul>
+        </ul>
+      </div>
     </nav>
   </div>
 </header>

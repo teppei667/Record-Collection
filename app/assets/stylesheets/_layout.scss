@@ -28,6 +28,8 @@ body {
  text-decoration: none !important;
  color: white;
  font-size: 25px;
+ margin-right: 30px;
+ margin-left: 30px;
 }
 
 .menu:hover {
@@ -49,4 +51,10 @@ footer {
  .no-opacity {
   opacity: 1;
  }
+
+ .navbar-toggler-icon {
+  color: white;
+ }
+
+
 }

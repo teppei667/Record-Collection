@@ -22,24 +22,8 @@ class EndUsersController < ApplicationController
     @records = Record.where(end_user_id: @end_user.id).order(created_at: :desc).limit(6)
     @my_favorites = Favorite.where(end_user_id: current_end_user.id)
     # DM機能
-    if end_user_signed_in?
-      @current_end_user_entry = Entry.where(end_user_id: current_end_user.id)
-      @end_user_entry = Entry.where(end_user_id: @end_user.id)
-      unless @end_user.id == current_end_user.id
-        @current_end_user_entry.each do |c|
-          @end_user_entry.each do |e|
-            if c.room_id == e.room_id
-              @is_room = true
-              @room_id = c.room_id
-            end
-          end
-        end
-        unless @is_room
-          @room = Room.new
-          @entry = Entry.new
-        end
-      end
-    end
+    @room_id = (@end_user.entries.pluck(:room_id) & current_end_user.entries.pluck(:room_id)).first
+    @room, @entry = Room.new, Entry.new unless @room_id
   end
 
   # current_end_userのお気に入り一覧ページ
