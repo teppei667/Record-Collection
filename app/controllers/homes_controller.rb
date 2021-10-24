@@ -5,6 +5,6 @@ class HomesController < ApplicationController
     end
   end
 
-  def contact_us
+  def terms_of_use
   end
 end

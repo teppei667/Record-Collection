@@ -1,24 +1,26 @@
-<div class="container text-left mb-5">
-  <h4 class="text-center"><%= link_to "record", records_path %></h4>
+<div class="container text-left mb-5 mt-3">
+  <h4 class="text-center mb-3"><%= link_to "レコード一覧へ", records_path, class: "text-white" %></h4>
   <%= form_with url: end_user_search_path, method: :get, local: true do |f| %>
     <div class="text-right form-group form-group-lg">
       <%= f.text_field :keyword, value: @keyword, class: "col-form-label border-0 rounded-pill col-sm-4" %>
-      <%= f.submit "検索", class: "btn btn-outline-light" %>
+      <%= f.submit "検索", class: "btn btn-outline-light search-btn" %>
     </div>
   <% end %>
   <% @end_users.each do |end_user| %>
-    <div class="text-white pl-5 mt-3">
-      <%= link_to end_user_path(end_user.id) , class: "mr-3" do %>
-        <%= attachment_image_tag end_user, :profile_image, fallback: "no-image.png", size: '80x80', class: "mr-5 rounded-circle" %>
-      <% end %>
-      <%= link_to end_user.name, end_user_path(end_user.id) , class: "mr-3" %>
-      <%= end_user.introduction %>
+    <div class="text-white pl-5 mt-3 d-flex justify-content-start">
+      <div>
+        <%= link_to end_user_path(end_user.id) , class: "mr-3" do %>
+          <%= attachment_image_tag end_user, :profile_image, fallback: "no-image.png", size: '80x80', class: "mr-5 rounded-circle" %>
+        <% end %>
+      </div>
+      <div><%= link_to end_user.name, end_user_path(end_user.id) , class: "mr-3" %></div>
+      <div><%= end_user.introduction %></div>
       <!--自分自身にはフォローボタンを表示しない-->
       <% unless end_user.id == current_end_user.id %>
         <% if current_end_user.following?(end_user) %>
-          <%= link_to "フォロー中", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-outline-light btn-sm ml-3" %>
+          <div><%= link_to "フォロー中", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-outline-light btn-sm ml-3" %></div>
         <% else %>
-          <%= link_to "フォーロする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-light btn-sm ml-3" %>
+          <div><%= link_to "フォーロする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-light btn-sm ml-3" %></div>
         <% end %>
       <% end %>
     </div>

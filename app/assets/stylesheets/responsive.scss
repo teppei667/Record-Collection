@@ -1,0 +1,30 @@
+@media screen and (max-width:599px){
+
+// mypageのレスポンシブデザイン
+  .my-record {
+
+    img {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    }
+
+  }
+
+  .new-collection{
+    margin-top: 0px;
+
+    .new-collection-icon {
+      img{
+      width: 100px;
+      }
+    }
+
+  }
+
+// レコード一覧画面のレスポンシブデザイン
+  .search-btn {
+    margin-top: 20px;
+  }
+}
+

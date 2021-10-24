@@ -4,8 +4,13 @@
       <%= image_tag 'main-logo.png', class: "img-fluid mt-5" %>
     </div>
     <div class="login">
-       <%= link_to image_tag("login-icon.png"), new_end_user_session_path %>
-       <%= link_to image_tag("sign-up-icon.png"), new_end_user_registration_path %>
+      <%= link_to image_tag("login-icon.png"), new_end_user_session_path %>
+      <%= link_to image_tag("sign-up-icon.png"), new_end_user_registration_path %>
+    </div>
+
+    <div class="contact text-right mr-5">
+      <%= link_to "利用規約", terms_of_use_path, class: "text-white" %>
+      <%= link_to "お問い合わせ", new_contact_path, class: "text-white" %>
     </div>
 
   </div>
