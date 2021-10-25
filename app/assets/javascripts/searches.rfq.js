@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function() {
 
     $('.search-index').html('');
 
-    const keyword = $(this).val();
+    var keyword = $(this).val();
 
     $.ajax({
       type: 'GET',
