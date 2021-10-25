@@ -9,14 +9,15 @@ class EndUsersController < ApplicationController
   end
 
   def index
-    @end_users = EndUser.all
+    keyword = params[:keyword]
+    @end_users = EndUser.search(keyword).order(created_at: :desc)
   end
 
-  def end_user_search
-    @end_users = EndUser.end_user_search(params[:keyword])
-    @keyword = params[:keyword]
-    render "index"
-  end
+  # def end_user_search
+  #   @end_users = EndUser.end_user_search(params[:keyword])
+  #   @keyword = params[:keyword]
+  #   render "index"
+  # end
 
   def show
     @end_user = EndUser.find(params[:id])

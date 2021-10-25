@@ -36,7 +36,11 @@ class EndUser < ApplicationRecord
     followings.include?(end_user)
   end
 
-  def self.end_user_search(keyword)
-    where(["name like?", "%#{keyword}%"])
+  def self.search(keyword)
+    if keyword == ''
+      end_users = EndUser.all
+    else
+      end_users = EndUser.where(["name like?", "%#{keyword}%"])
+    end
   end
 end

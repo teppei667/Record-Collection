@@ -5,7 +5,6 @@ class RecordsController < ApplicationController
   def index
     keyword = params[:keyword]
     @records = Record.search(keyword).order(created_at: :desc)
-    render "index"
   end
 
   # def record_search
