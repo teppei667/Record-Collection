@@ -17,11 +17,9 @@
       <div><%= end_user.introduction %></div>
       <!--自分自身にはフォローボタンを表示しない-->
       <% unless end_user.id == current_end_user.id %>
-        <% if current_end_user.following?(end_user) %>
-          <div><%= link_to "フォロー中", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-outline-light btn-sm ml-3" %></div>
-        <% else %>
-          <div><%= link_to "フォーロする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-light btn-sm ml-3" %></div>
-        <% end %>
+      <div id="follow_btns_<%= end_user.id %>">
+        <%= render partial: 'relationships/follows', locals: { end_user: end_user } %>
+      </div>
       <% end %>
     </div>
   <% end %>

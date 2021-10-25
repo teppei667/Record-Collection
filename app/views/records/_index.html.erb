@@ -1,0 +1,5 @@
+<% records.each do |record| %>
+  <%= link_to record_path(record.id), class: "my-record" do %>
+    <%= attachment_image_tag record, :image, fallback: "no-image.png", size:'200x200', class: "m-1 record record-image" %>
+  <% end %>
+<% end %>

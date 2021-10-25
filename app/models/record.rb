@@ -19,7 +19,15 @@ class Record < ApplicationRecord
     favorites.where(end_user_id: end_user.id).exists?
   end
 
-  def self.record_search(keyword)
-    where(["title like? OR introduction like? OR artist_name like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+  # def self.record_search(keyword)
+  #   where(["title like? OR introduction like? OR artist_name like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+  # end
+
+  def self.search(keyword)
+    if keyword == ''
+      records = Record.all
+    else
+      records = Record.where(["title like? OR introduction like? OR artist_name like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+    end
   end
 end

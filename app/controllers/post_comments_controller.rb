@@ -4,15 +4,14 @@ class PostCommentsController < ApplicationController
   
   def create
     @record = Record.find(params[:record_id])
-    comment = PostComment.new(post_comment_params)
-    comment.end_user_id = current_end_user.id
+    comment = current_end_user.post_comments.new(post_comment_params)
     comment.record_id = @record.id
     comment.save
     @post_comments = PostComment.where(record_id: @record.id).order(created_at: :desc)
   end
 
   def destroy
-    PostComment.find_by(id: params[:id]).destroy
+    PostComment.find_by(id: params[:id]).destroyco
     @record = Record.find(params[:record_id])
     @post_comments = PostComment.where(record_id: @record.id).order(created_at: :desc)
   end

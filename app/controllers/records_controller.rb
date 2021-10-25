@@ -3,14 +3,16 @@ class RecordsController < ApplicationController
   before_action :authenticate_end_user!
 
   def index
-    @records = Record.all.order(created_at: :desc)
-  end
-
-  def record_search
-    @records = Record.record_search(params[:keyword])
-    @keyword = params[:keyword]
+    keyword = params[:keyword]
+    @records = Record.search(keyword).order(created_at: :desc)
     render "index"
   end
+
+  # def record_search
+  #   @records = Record.record_search(params[:keyword])
+  #   @keyword = params[:keyword]
+  #   render "index"
+  # end
 
   def new
     @record = Record.new

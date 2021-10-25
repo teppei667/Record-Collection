@@ -4,7 +4,8 @@ class EndUsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :my_favorite]
 
   def mypage
-    @records = Record.where(end_user_id: current_end_user.id).order(created_at: :desc)
+    @end_user = EndUser.find(params[:id])
+    @records = Record.where(end_user_id: @end_user.id).order(created_at: :desc)
   end
 
   def index

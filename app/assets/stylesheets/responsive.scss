@@ -26,5 +26,42 @@
   .search-btn {
     margin-top: 20px;
   }
+
+// ユーザ詳細画面のレスポンシブデザイン
+  .user-show {
+    .profile-image {
+      width: 100px;
+      height: 100px;
+    }
+    .record-image {
+      width: 80px;
+      height: 80px;
+    }
+    .introduction {
+      font-size: 8px;
+    }
+    .follow {
+      font-size: 12px;
+    }
+    .follower {
+      font-size: 9px;
+    }
+    .responsive-title {
+      font-size: 20px;
+    }
+  }
+
+  .record-index {
+    .record-image {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  footer {
+    .footer-menu {
+      font-size: 10px;
+    }
+  }
 }
 

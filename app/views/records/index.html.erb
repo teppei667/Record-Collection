@@ -1,16 +1,12 @@
-<div class="container text-center">
+<div class="container text-center record-index">
   <h5><%= link_to "ユーザ一覧へ", end_users_path, class: "text-white"%></h5/>
-    <%= form_with url: record_search_path, method: :get, local: true do |f| %>
+    <%= form_with url: records_path, method: :get do |f| %>
       <div class="text-right form-group form-group-lg">
-        <%= f.text_field :keyword, value: @keyword, class: "col-form-label border-0 rounded-pill col-sm-4" %>
+        <%= f.text_field :keyword, value: @keyword, class: "col-form-label border-0 rounded-pill col-sm-4 search_word" %>
         <%= f.submit "検索", class: "btn btn-outline-light search-btn" %>
       </div>
     <% end %>
-  <div class="d-flex justify-content-around flex-wrap">
-    <% @records.each do |record| %>
-      <%= link_to record_path(record.id), class: "my-record" do %>
-        <%= attachment_image_tag record, :image, fallback: "no-image.png", size:'200x200', class: "m-2" %>
-      <% end %>
-    <% end %>
+  <div class="d-flex justify-content-around flex-wrap search-index">
+    <%= render 'index', records: @records %>
   </div>
 </div>
