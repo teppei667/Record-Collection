@@ -33,7 +33,6 @@ describe 'ユーザログイン前のテスト' do
         expect(page).to have_link terms_of_use_link, href: terms_of_use_path
       end
     end
-
   end
 
   describe '利用規約画面のテスト' do
@@ -59,7 +58,6 @@ describe 'ユーザログイン前のテスト' do
       end
     end
   end
-
 
   describe 'ユーザー新規登録のテスト' do
     before do

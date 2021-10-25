@@ -9,7 +9,6 @@ class Record < ApplicationRecord
   validates :introduction, presence: true, length: { minimum: 2, maximum: 500 }
   validates :release_date, presence: true
 
-
   attachment :image
 
   enum genre: { pops: 0, rock: 1, black_music: 2, edm: 3, classic: 4, jazz: 5 }

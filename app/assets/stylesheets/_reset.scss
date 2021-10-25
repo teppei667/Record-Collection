@@ -7,6 +7,7 @@
     line-height: 100%;
     letter-spacing: 1px;
     text-decoration: none !important;
+    font-family: 'Zen Antique Soft', serif;
 
   h1,h2,h3 {
     color: white;
@@ -28,6 +29,11 @@
 
   p {
     margin-bottom: 0;
+  }
+
+  .bg-color {
+    background-color: rgba(0, 0, 0, 0.5);
+    
   }
 
 }

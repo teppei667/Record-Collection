@@ -24,5 +24,4 @@ RSpec.describe PostComment, 'post_commentモデルに関するテスト', type: 
       end
     end
   end
-
 end

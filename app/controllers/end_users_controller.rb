@@ -1,5 +1,4 @@
 class EndUsersController < ApplicationController
-
   before_action :authenticate_end_user!
   before_action :ensure_correct_user, only: [:edit, :update, :my_favorite]
 
@@ -56,5 +55,4 @@ class EndUsersController < ApplicationController
       redirect_to mypage_path(current_end_user.id)
     end
   end
-
 end

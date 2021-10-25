@@ -14,7 +14,7 @@
         </div>
       <!--自分のプロフィールを見る場合-->
       <% else %>
-        <%= link_to "編集", edit_end_user_path(@end_user.id) %>
+        <div><%= link_to "編集", edit_end_user_path(@end_user.id, class: "text-white") %></div>
       <% end %>
       <p class="mt-3 text-white introduction"><%= @end_user.introduction %></p>
       <div>
