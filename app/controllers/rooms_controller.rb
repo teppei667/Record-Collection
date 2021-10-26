@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
 
   def index
     @end_user = current_end_user
-    @current_entries = @end_user.entries
+    @current_entries = @end_user.entries.includes([:room])
     my_room_ids = []
     @current_entries.each do |entry|
       my_room_ids << entry.room.id
@@ -14,7 +14,7 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     if Entry.where(:end_user_id => current_end_user.id, :room_id => @room.id).present?
-      @direct_messages = @room.direct_messages
+      @direct_messages = @room.direct_messages.includes([:end_user])
       @entries = @room.entries
     else
       redirect_back(fallback_location: root_path)

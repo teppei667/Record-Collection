@@ -21,7 +21,7 @@ class EndUsersController < ApplicationController
   def show
     @end_user = EndUser.find(params[:id])
     @records = Record.where(end_user_id: @end_user.id).order(created_at: :desc).limit(6)
-    @my_favorites = Favorite.where(end_user_id: current_end_user.id)
+    @my_favorites = Favorite.includes([:record]).where(end_user_id: current_end_user.id)
     # DM機能
     @room_id = (@end_user.entries.pluck(:room_id) & current_end_user.entries.pluck(:room_id)).first
     @room, @entry = Room.new, Entry.new unless @room_id

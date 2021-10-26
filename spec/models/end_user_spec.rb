@@ -15,15 +15,15 @@ RSpec.describe EndUser, 'EndUserモデルに関するテスト', type: :model do
       expect(end_user).to be_invalid
       expect(end_user.errors[:name]).to include("can't be blank")
     end
-    it "nameが空白の場合にバリデーションチェックされ空白のエラーメッセージ返ってきているか" do
-      end_user = EndUser.new(name: '', email: 'hogemial.com', password: '123456')
+    it "emailが空白の場合にバリデーションチェックされ空白のエラーメッセージ返ってきているか" do
+      end_user = EndUser.new(name: 'hoge', email: '', password: '123456')
       expect(end_user).to be_invalid
-      expect(end_user.errors[:name]).to include("can't be blank")
+      expect(end_user.errors[:email]).to include("can't be blank")
     end
-    it "nameが空白の場合にバリデーションチェックされ空白のエラーメッセージ返ってきているか" do
-      end_user = EndUser.new(name: '', email: 'hogemial.com', password: '123456')
+    it "passwordが空白の場合にバリデーションチェックされ空白のエラーメッセージ返ってきているか" do
+      end_user = EndUser.new(name: 'hoge', email: 'hogemial.com', password: '')
       expect(end_user).to be_invalid
-      expect(end_user.errors[:name]).to include("can't be blank")
+      expect(end_user.errors[:password]).to include("can't be blank")
     end
   end
 

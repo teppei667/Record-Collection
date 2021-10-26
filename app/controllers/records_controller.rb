@@ -24,7 +24,7 @@ class RecordsController < ApplicationController
   def show
     @record = Record.find(params[:id])
     @post_comment = PostComment.new
-    @post_comments = PostComment.where(record_id: @record.id).order(created_at: :desc)
+    @post_comments = PostComment.includes([:record, :end_user]).where(record_id: @record.id).order(created_at: :desc)
   end
 
   def edit
