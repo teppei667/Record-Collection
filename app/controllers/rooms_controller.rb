@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     if Entry.where(:end_user_id => current_end_user.id, :room_id => @room.id).present?
       @direct_messages = @room.direct_messages.includes([:end_user])
-      @entries = @room.entries
+      @entries = @room.entries.includes([:end_user])
     else
       redirect_back(fallback_location: root_path)
     end

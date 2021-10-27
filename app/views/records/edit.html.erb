@@ -3,10 +3,10 @@
   <%= render 'records/error_message' %>
 
   <%= form_with model: @record, local:true do |f| %>
-    <div class="form-group form-group-lg mt-5">
-      <img id="preview" style="width:15%;">
-      <%= attachment_image_tag @record, :image, fallback: "no-image.png", size: '180x180', id: "existing_file" %>
-      <%= f.attachment_field :image, class: "col-form-label rounded-pill col-sm-6" %>
+    <div class="form-group form-group-lg mt-5 text-center">
+      <p><img id="preview"></p>
+      <p><%= attachment_image_tag @record, :image, fallback: "no-image.png", size: '180x180', id: "existing_file" %></p>
+      <p class="text-center"><%= f.attachment_field :image %></p>
     </div>
     <div class="form-group form-group-lg mt-5">
       <%= f.text_field :title, placeholder: "タイトル", class: "col-form-label rounded-pill col-sm-6" %>

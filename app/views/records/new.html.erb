@@ -3,9 +3,9 @@
   <%= render 'records/error_message' %>
 
   <%= form_with model: @record, local:true do |f| %>
-    <div class="form-group form-group-lg mt-5">
-      <img id="preview" style="width:15%;">
-      <%= f.attachment_field :image, class: "col-form-label rounded-pill col-sm-6" %>
+    <div class="form-group form-group-lg mt-5 text-center">
+      <p><img id="preview"></p>
+      <p><%= f.attachment_field :image %></p>
     </div>
     <div class="form-group form-group-lg mt-5">
       <%= f.text_field :title, placeholder: "タイトル", class: "col-form-label rounded-pill col-sm-6" %>
@@ -31,14 +31,14 @@
   <% end %>
 </div>
 
-<img id="preview" style="width:40%;">
-
 <script>
   $('#record_image').on('change', function (e) {
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = function (e) {
         $("#preview").attr('src', e.target.result);
+        $("#existing_file").hide();
     }
     reader.readAsDataURL(e.target.files[0]);
 });
 </script>
+

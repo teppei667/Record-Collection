@@ -22,11 +22,12 @@ class Record < ApplicationRecord
   #   where(["title like? OR introduction like? OR artist_name like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
   # end
 
+  #rcordのindexページの検索
   def self.search(keyword)
     if keyword == ''
-      records = Record.all
+      all
     else
-      records = Record.where(["title like? OR introduction like? OR artist_name like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+      where(["title like? OR introduction like? OR artist_name like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
     end
   end
 end

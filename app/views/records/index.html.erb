@@ -1,12 +1,12 @@
-<div class="container text-center record-index">
-  <h5><%= link_to "ユーザ一覧へ", end_users_path, class: "text-white"%></h5/>
+<div class="container text-center record-index bg-color">
+  <h4 class="text-center mb-3"><%= link_to "ユーザ一覧へ", end_users_path, class: "text-white"%></h4>
     <%= form_with url: records_path, method: :get do |f| %>
       <div class="text-right form-group form-group-lg">
         <%= f.text_field :keyword, value: @keyword, class: "col-form-label border-0 rounded-pill col-sm-4 search_word" %>
         <%= f.submit "検索", class: "btn btn-outline-light search-btn" %>
       </div>
     <% end %>
-  <div class="d-flex justify-content-around flex-wrap search-record">
+  <div class="d-flex justify-content-center align-content-start flex-wrap search-record">
     <%= render 'index', records: @records %>
   </div>
 </div>

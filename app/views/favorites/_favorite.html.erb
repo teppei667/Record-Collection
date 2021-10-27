@@ -1,13 +1,13 @@
  <% if record.favorited_by?(current_end_user) %>
-    <p>
+    <p class="d-inline">
       <%= link_to record_favorites_path(record.id), method: :delete, class: "text-white", remote: true do %>
-        <i class="fas fa-star"></i>
+        <i class="fas fa-star fa-2x favorite-icon"></i>
       <% end %>
     </p>
   <% else %>
-    <p>
-      <%= link_to record_favorites_path(record.id), method: :post, class: "text-white", remote: true do %>
-        <i class="far fa-star"></i>
+    <p class="d-inline">
+      <%= link_to record_favorites_path(record.id), method: :post, class: "text-white ", remote: true do %>
+        <i class="far fa-star fa-2x"></i>
       <% end %>
     </p>
   <% end %>

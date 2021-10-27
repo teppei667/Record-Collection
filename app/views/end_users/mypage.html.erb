@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container bg-color">
   <div class="text-center mb-3 new-collection">
     <% if @end_user == current_end_user %>
       <%= link_to image_tag("new-collection.png"), new_record_path, class: "img-fluid new-collection-icon" %>
@@ -8,12 +8,11 @@
       <% end %>
     <% end %>
   </div>
-  <div class="mb-5 d-flex justify-content-around flex-wrap">
+  <div class="mb-5 d-flex justify-content-center flex-wrap">
     <% @records.each do |record| %>
       <%= link_to record_path(record.id), class: "my-record" do %>
         <%= attachment_image_tag record, :image, fallback: "no-image.png", size:'200x200', class: "mb-2 shadow" %>
       <% end %>
     <% end %>
   </div>
-
 </div>

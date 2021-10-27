@@ -1,5 +1,11 @@
 @media screen and (max-width:599px){
 
+// headerのレスポンシブデザイン
+  .sp-menu {
+    padding-bottom: 13px;
+  }
+
+
 // mypageのレスポンシブデザイン
   .my-record {
 
@@ -26,6 +32,23 @@
   .search-btn {
     margin-top: 20px;
   }
+
+//レコード詳細画面のレスポンシブデザイン
+ .show-record {
+   width: 120px;
+   height: 120px;
+ }
+
+ .sp-fontsize {
+  font-size: 15px;
+ }
+
+ .sp-fontsize-p {
+   font-size: 12px;
+ }
+
+//ユーザ一覧画面のレスポンシブデザイン
+
 
 // ユーザ詳細画面のレスポンシブデザイン
   .user-show {
@@ -59,8 +82,8 @@
   }
 
   footer {
-    .footer-menu {
-      font-size: 10px;
+    .menu {
+      font-size: 7px;
     }
   }
 }
