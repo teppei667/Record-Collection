@@ -1,5 +1,5 @@
 <div class="container text-left p-5 bg-color">
-  <h4 class="text-center mb-3"><%= link_to "レコード一覧へ", records_path, class: "text-white" %></h4>
+  <h4 class="text-center mb-3"><%= link_to "レコード一覧", records_path, class: "text-white" %></h4>
   <%= form_with url: end_users_path, method: :get, local: true do |f| %>
     <div class="text-right form-group form-group-lg">
       <%= f.text_field :keyword, value: @keyword, class: "col-form-label border-0 rounded-pill col-sm-4 search_word" %>
