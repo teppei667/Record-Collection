@@ -1,7 +1,7 @@
 <div class="container">
   <h2>メッセージ一覧</h2>
   <% @another_entries.each do |another_entry| %>
-    <table class="table table-striped">
+    <table class="table table-striped dm-table">
       <tr>
         <td>
           <%= link_to room_path(another_entry.room.id) do %>
@@ -13,17 +13,17 @@
           <!-- 最新メッセージ内容の最初の7文字を表示する -->
           <% if another_entry.room.direct_message_ids.present? %>
             <% dm = DirectMessage.find_by(id: another_entry.room.direct_message_ids.last).message %>
-            <%= truncate(dm, length: 10) %>
+            <p class="d-message"><%= truncate(dm, length: 10) %></p>
           <% else %>
-            <p class="text-danger">メッセージを送信しまよう</p>
+            <p class="text-danger d-message">メッセージを送信しまよう</p>
           <% end %>
         </td>
         <td>
-          <h6 style="color: #C0C0C0;"><%= another_entry.updated_at.strftime("%Y/%m/%d %H:%M") %></h6>
+          <h6 class="d-message" style="color: #C0C0C0;"><%= another_entry.updated_at.strftime("%Y/%m/%d %H:%M") %></h6>
         </td>
         <td>
           <%= link_to room_path(another_entry.room.id), method: :delete do %>
-            <i class="fas fa-trash" style="color: white;"></i>
+            <i class="fas fa-trash d-delete" style="color: white;"></i>
           <% end %>
         </td>
       </tr>

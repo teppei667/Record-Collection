@@ -8,7 +8,7 @@ class RoomsController < ApplicationController
     @current_entries.each do |entry|
       my_room_ids << entry.room.id
     end
-    @another_entries = Entry.where(room_id: my_room_ids).where.not(end_user_id: @end_user.id).order(created_at: :desc)
+    @another_entries = Entry.includes([:room, :end_user]).where(room_id: my_room_ids).where.not(end_user_id: @end_user.id).order(created_at: :desc)
   end
 
   def show
