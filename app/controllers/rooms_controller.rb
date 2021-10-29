@@ -34,4 +34,5 @@ class RoomsController < ApplicationController
     room.destroy
     redirect_to request.referer
   end
+  
 end
