@@ -1,12 +1,12 @@
-<div class="container text-white text-center">
+<div class="main-container text-white text-center">
 
   <%= render 'end_users/error_message' %>
 
  <%= form_with model: @end_user, local: true do |f| %>
-   <div class="form-group form-group-lg mt-5">
-     <img id="preview" style="width:20%;">
-     <%= attachment_image_tag @end_user, :profile_image, fallback: "no-image2.jpg", size: '200x150', id: "existing_file" %>
-     <%= f.attachment_field :profile_image %>
+   <div class="form-group form-group-lg mt-5 text-center">
+     <p><img id="preview"></p>
+     <p><%= attachment_image_tag @end_user, :profile_image, fallback: "no-image2.jpg", size: '200x150', id: "existing_file" %></p>
+     <p><%= f.attachment_field :profile_image %></p>
    </div>
    <div class="form-group form-group-lg mt-5">
       <%= f.text_field :name, class: "col-form-label rounded-pill col-sm-6" %>

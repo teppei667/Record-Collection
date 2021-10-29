@@ -1,8 +1,10 @@
-<div class="container">
+<div class="main-container text-center">
   <h3>お気に入り一覧</h3>
+  <div class="d-flex justify-content-center align-content-start flex-wrap">
     <% @favorite_records.each do |favorites_record| %>
-      <%= link_to record_path(favorites_record.id) do %>
-       <%= attachment_image_tag favorites_record, :image, fallback: "no-image.png", size:'200x200', class: "m-2" %>
+      <%= link_to record_path(favorites_record.id), class: "my-record" do %>
+       <%= attachment_image_tag favorites_record, :image, fallback: "no-image.png", size:'200x200', class: "m-1 record record-image" %>
       <% end %>
     <% end %>
+  </div>
 </div>

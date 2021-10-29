@@ -16,9 +16,7 @@
     <% if end_user_signed_in? %>
       <%= render 'layouts/header' %>
     <% end %>
-    <div class="main-container">
-      <%= yield %>
-    </div>
+    <%= yield %>
     <% if end_user_signed_in? %>
       <%= render 'layouts/footer' %>
     <% end %>

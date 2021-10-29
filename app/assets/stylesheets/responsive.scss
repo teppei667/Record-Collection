@@ -47,6 +47,19 @@
    font-size: 12px;
  }
 
+ .comment-form {
+   width: 140px;
+ }
+
+ .comment-index {
+   font-size: 15px;
+ }
+
+ .favorite-icon {
+   font-size: 20px;
+ }
+
+
 //ユーザ一覧画面のレスポンシブデザイン
 
 
@@ -74,11 +87,18 @@
     }
   }
 
+  //DMページのレスポンシブデザイン
+  .d-message {
+    font-size: 13px;
+  }
   .record-index {
     .record-image {
       width: 100px;
       height: 100px;
     }
+  }
+   .chat-time {
+    font-size: 10px;
   }
 
   footer {
@@ -88,6 +108,24 @@
     }
   }
 
-  //dmのroom一覧のレスポンシブデザイン
 }
 
+
+//PC画面のみに反映させたいデザイン
+@media screen and (min-width:600px){
+
+  //レコード詳細ページのスタイリング
+
+  //DMページ
+  .show-message {
+    font-size: 18px;
+  }
+
+  .chat-time {
+    font-size: 12px;
+  }
+
+  .dm-wrapper {
+    padding: 15px 100px;
+  }
+}

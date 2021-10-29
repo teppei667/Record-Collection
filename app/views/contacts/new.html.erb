@@ -1,16 +1,19 @@
 <div class="container text-center mt-5">
   <h2>お問い合わせフォーム</h2>
+
+  <%= render 'contacts/error_message' %>
+
   <%= form_with model: @contact, url: confirm_path, local: true do |f| %>
     <div class="form-group form-group-lg mt-5">
-      <%= f.text_field :name, autofocus: true, placeholder: "名前", class: 'col-form-label border-0 rounded-pill col-sm-6' %>
+      <%= f.text_field :name, autofocus: true, placeholder: "名前", class: 'col-form-label rounded-pill col-sm-6' %>
     </div>
 
     <div class="form-group form-group-lg mt-5">
-      <%= f.text_field :email, placeholder: "メール", class: 'col-form-label border-0 rounded-pill col-sm-6' %>
+      <%= f.text_field :email, placeholder: "メール", class: 'col-form-label rounded-pill col-sm-6' %>
     </div>
 
     <div class="form-group form-group-lg mt-5">
-      <%= f.text_area :message, placeholder: "お問い合わせ内容", size: '10x10', class: 'col-form-label border-0 rounded col-sm-6 mb-5' %>
+      <%= f.text_area :message, placeholder: "お問い合わせ内容", size: '10x10', class: 'col-form-label rounded col-sm-6 mb-5' %>
     </div>
 
     <div>

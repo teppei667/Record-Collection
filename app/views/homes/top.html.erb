@@ -1,22 +1,18 @@
-<div class="text-center">
-  <div class="top-main">
+  <div class="text-center">
     <div>
-      <%= image_tag 'main-logo.png', class: "img-fluid mt-5" %>
+      <%= image_tag 'main-logo2.png', class: "img-fluid mt-5" %>
+    </div>
+
+    <div class="about">
+      <h1>あなたの大切なレコードコレクションのために</h1>
+      <p class="mt-5 text-white">レコードのコレクション部屋が欲しい</br>自分の持っているレコードをひと目で確認したい</br>同じ趣味の人と繋がりたい</p>
     </div>
     <div class="login">
       <%= link_to image_tag("login-icon.png"), new_end_user_session_path %>
       <%= link_to image_tag("sign-up-icon.png"), new_end_user_registration_path %>
-    </div>
-
-
-
-  </div>
-  <div class="about">
-    <h1>あなたの大切なレコードコレクションのために</h1>
-    <p class="mt-5 text-white">レコードのコレクション部屋が欲しい</br>自分の持っているレコードをひと目で確認したい</br>同じ趣味の人と繋がりたい</p>
-    <div class="contact mr-5 terms-contact">
-      <%= link_to "利用規約", terms_of_use_path, class: "text-white mr-3" %>
-      <%= link_to "お問い合わせ", new_contact_path, class: "text-white ml-3" %>
+      <div class="contact mr-5 terms-contact">
+        <%= link_to "利用規約", terms_of_use_path, class: "text-white mr-3" %>
+        <%= link_to "お問い合わせ", new_contact_path, class: "text-white ml-3" %>
+      </div>
     </div>
   </div>
-</div>

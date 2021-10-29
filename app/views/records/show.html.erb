@@ -1,5 +1,5 @@
-<div class="container mt-5">
-  <div class="row bg-color pt-5">
+<div class="main-container mt-3">
+  <div class="row">
     <div class="col-6 text-center  mb-5">
       <div class="mb-3">
         <%= link_to end_user_path(@record.end_user_id), class: "contributor_name" do %>
@@ -27,7 +27,7 @@
   <div class="row mt-5 mb-5">
     <div class="col-6 text-center">
       <%= form_with model:[@record, @post_comment] do |f| %>
-        <%= f.text_area :comment, rows:'5', placeholder: "コメント", class: "border-0 rounded" %>
+        <%= f.text_area :comment, rows:'5', placeholder: "コメント", class: "border-0 rounded comment-form" %>
         <%= f.submit "送信", class: "btn btn-outline-light btn-sm" %>
       <% end %>
     </div>

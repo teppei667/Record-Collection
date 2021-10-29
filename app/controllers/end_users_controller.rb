@@ -9,14 +9,9 @@ class EndUsersController < ApplicationController
 
   def index
     keyword = params[:keyword]
-    @end_users = EndUser.search(keyword).order(created_at: :desc)
+    # end_userの検索結果を表示（current_end_userは表示しない）
+    @end_users = EndUser.search(keyword).where.not(id: current_end_user.id).order(created_at: :desc)
   end
-
-  # def end_user_search
-  #   @end_users = EndUser.end_user_search(params[:keyword])
-  #   @keyword = params[:keyword]
-  #   render "index"
-  # end
 
   def show
     @end_user = EndUser.find(params[:id])

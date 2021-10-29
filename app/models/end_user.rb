@@ -36,8 +36,7 @@ class EndUser < ApplicationRecord
     followings.include?(end_user)
   end
 
-
-  #end_userのindexページで検索
+  # end_userのindexページで検索
   def self.search(keyword)
     if keyword == ''
       all

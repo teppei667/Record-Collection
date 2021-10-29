@@ -1,11 +1,11 @@
-<div class="container">
+<div class="main-container bg-color">
   <h2>メッセージ一覧</h2>
   <% @another_entries.each do |another_entry| %>
     <table class="table table-striped dm-table">
       <tr>
         <td>
           <%= link_to room_path(another_entry.room.id) do %>
-            <%= attachment_image_tag another_entry.end_user, :profile_image, fallback: "no-image.png", size: '60x60', class: "rounded-circle" %>
+            <%= attachment_image_tag another_entry.end_user, :profile_image, fallback: "no-image.png", size: '60x60', class: "rounded-circle" %></br>
           <% end %>
           <%= link_to another_entry.end_user.name, room_path(another_entry.room.id) %>
         </td>
@@ -17,9 +17,6 @@
           <% else %>
             <p class="text-danger d-message">メッセージを送信しまよう</p>
           <% end %>
-        </td>
-        <td>
-          <h6 class="d-message" style="color: #C0C0C0;"><%= another_entry.updated_at.strftime("%Y/%m/%d %H:%M") %></h6>
         </td>
         <td>
           <%= link_to room_path(another_entry.room.id), method: :delete do %>

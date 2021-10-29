@@ -1,16 +1,13 @@
-  <% end_users.each do |end_user| %>
-    <div class="text-white mt-3 d-flex justify-content-center end-user-item">
+  <% end_users.each do |end_user| %>e
+    <div class="text-white mt-3 d-flex justify-content-around end-user-item">
       <div class="mr-1">
         <%= link_to end_user_path(end_user.id) do %>
-          <%= attachment_image_tag end_user, :profile_image, fallback: "no-image.png", size: '80x80', class: "rounded-circle" %>
+          <%= attachment_image_tag end_user, :profile_image, fallback: "no-image.png", size: '60x60', class: "rounded-circle" %>
         <% end %>
       </div>
       <div class="mr-3"><%= link_to end_user.name, end_user_path(end_user.id) %></div>
-      <!--自分自身にはフォローボタンを表示しない-->
-      <% unless end_user.id == current_end_user.id %>
       <div id="follow_btns_<%= end_user.id %>" class="mr-2">
         <%= render partial: 'relationships/follows', locals: { end_user: end_user } %>
       </div>
-      <% end %>
     </div>
   <% end %>
