@@ -2,7 +2,7 @@
   <h2 class="contact-finish">送信完了</h2>
   <p>
     <% if end_user_signed_in? %>
-      <%= link_to "mypageへ戻る", mypage_path(current_end_user.id), class: "btn btn-outline-light" %>
+      <%= link_to "mypageへ戻る", mypage_end_user_path(current_end_user.id), class: "btn btn-outline-light" %>
     <% else %>
       <%= link_to "ホームへ戻る", "/", class: "btn btn-outline-light" %>
     <% end %>

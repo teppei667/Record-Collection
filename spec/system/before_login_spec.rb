@@ -101,11 +101,11 @@ describe 'ユーザログイン前のテスト' do
       end
       it '新規登録後のリダイレクト先がmypageになっている' do
         click_button 'Sign up'
-        expect(current_path).to eq '/mypage/' + EndUser.last.id.to_s
+        expect(current_path).to eq '/end_users/' + EndUser.last.id.to_s + '/mypage/' + EndUser.last.id.to_s
       end
     end
   end
-
+  
   describe 'ユーザログインテスト' do
     let(:end_user) { create(:end_user) }
 
@@ -139,7 +139,7 @@ describe 'ユーザログイン前のテスト' do
       end
 
       it 'ログイン後のリダイレクト先が、mypageになっている' do
-        expect(current_path).to eq '/mypage/' + end_user.id.to_s
+        expect(current_path).to eq '/end_users/' + end_user.id.to_s + '/mypage/' + end_user.id.to_s
       end
     end
 

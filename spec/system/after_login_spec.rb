@@ -24,7 +24,7 @@ describe 'ユーザログイン後のテスト' do
         mypage_link = find_all('a')[1].native.inner_text
         mypage_link = mypage_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link mypage_link
-        is_expected.to eq '/mypage/' + end_user.id.to_s
+        is_expected.to eq '/end_users/' + end_user.id.to_s + '/mypage/' + end_user.id.to_s
       end
       it 'Searchを押すと、レコード一覧画面に遷移する' do
         end_users_link = find_all('a')[2].native.inner_text
@@ -43,12 +43,12 @@ describe 'ユーザログイン後のテスト' do
 
   describe 'mypageのテスト' do
     before do
-      visit mypage_path(end_user)
+      visit mypage_end_user_path(end_user)
     end
 
     context '表示内容の確認' do
       it 'URLが正しい' do
-        expect(current_path).to eq '/mypage/' + end_user.id.to_s
+        expect(current_path).to eq '/end_users/' + end_user.id.to_s + '/mypage/' + end_user.id.to_s
       end
       it 'レコードの画像のリンク先が正しい' do
         expect(page).to have_link '', href: record_path(record)
@@ -102,7 +102,7 @@ describe 'ユーザログイン後のテスト' do
       end
       it 'リダイレクト先が、mypageになっている' do
         click_button 'new_record_button'
-        expect(current_path).to eq '/mypage/' + end_user.id.to_s
+        expect(current_path).to eq '/end_users/' + end_user.id.to_s + '/mypage/' + end_user.id.to_s
       end
     end
   end
@@ -162,7 +162,7 @@ describe 'ユーザログイン後のテスト' do
       end
 
       it 'リダイレクト先がmypageに設定されている' do
-        expect(current_path).to eq '/mypage/' + end_user.id.to_s
+        expect(current_path).to eq '/end_users/' + end_user.id.to_s + '/mypage/' + end_user.id.to_s
       end
     end
   end
@@ -242,7 +242,7 @@ describe 'ユーザログイン後のテスト' do
         expect(page).to have_field 'keyword'
       end
       it 'ユーザー一覧へのリンクが表示されている' do
-        expect(page).to have_link 'ユーザ一覧へ', href: end_users_path
+        expect(page).to have_link 'ユーザ一覧', href: end_users_path
       end
       it '投稿されている全てのレコードの画像が表示される' do
         expect(page).to have_link record.image, href: record_path(record)
@@ -264,14 +264,13 @@ describe 'ユーザログイン後のテスト' do
         expect(page).to have_field 'keyword'
       end
       it 'レコード一覧画面へのリンクが表示されている' do
-        expect(page).to have_link 'レコード一覧へ', href: records_path
+        expect(page).to have_link 'レコード一覧', href: records_path
       end
       it '自分と他人の画像のリンク先が正しい' do
         expect(page).to have_link '', href: end_user_path(record.end_user)
         expect(page).to have_link '', href: end_user_path(other_record.end_user)
       end
       it '自分と他人の名前のリンクが正しい' do
-        expect(page).to have_link end_user.name, href: end_user_path(record.end_user)
         expect(page).to have_link other_end_user.name, href: end_user_path(other_record.end_user)
       end
     end
@@ -299,7 +298,7 @@ describe 'ユーザログイン後のテスト' do
         expect(page).to have_link '', href: record_path(favorite.record)
       end
       it '自分のお気に入りしたレコード一覧へのリンクが表示されている' do
-        expect(page).to have_link 'お気に入り一覧へ', href: my_favorite_path(end_user)
+        expect(page).to have_link 'お気に入り一覧へ', href: my_favorite_end_user_path(end_user)
       end
     end
   end
@@ -352,12 +351,12 @@ describe 'ユーザログイン後のテスト' do
 
   describe '自分のお気に入り一覧画面のテスト' do
     before do
-      visit my_favorite_path(end_user)
+      visit my_favorite_end_user_path(end_user)
     end
 
     context '表示の確認' do
       it 'URLが正しい' do
-        expect(current_path).to eq '/my_favorite/' + end_user.id.to_s
+        expect(current_path).to eq '/end_users/' + end_user.id.to_s + '/my_favorite/' + end_user.id.to_s
       end
       it '自分がお気に入り登録したレコードの詳細画面へのリンクが表示されている' do
         expect(page).to have_link '', href: record_path(favorite.record)

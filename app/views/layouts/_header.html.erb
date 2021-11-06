@@ -11,7 +11,7 @@
 
       <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
         <ul class="navbar-nav">
-          <li class="sp-menu"><%= link_to 'My Records', mypage_path(current_end_user.id), class: "menu" %></li>
+          <li class="sp-menu"><%= link_to 'My Records', mypage_end_user_path(current_end_user.id), class: "menu" %></li>
           <li class="sp-menu"><%= link_to 'Search', records_path, class: "menu" %></li>
           <li class="sp-menu"><%= link_to 'DM', rooms_path, class: "menu" %></li>
         </ul>

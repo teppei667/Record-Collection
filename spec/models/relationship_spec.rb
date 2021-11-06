@@ -31,11 +31,11 @@ RSpec.describe Relationship, type: :model do
         @user1 = FactoryBot.build(:relationship)
       end
 
-      it "follower_idとfollowed_idの組み合わせは一意でなければ保存できない" do
-        relation2 = FactoryBot.build(:relationship, follower_id: @relation.follower_id, followed_id: @relation.followed_id)
-        relation2.valid?
-        expect(relation2.errors[:follower_id]).to include("has already been taken")
-      end
+      # it "follower_idとfollowed_idの組み合わせは一意でなければ保存できない" do
+      #   relation2 = FactoryBot.build(:relationship, follower_id: @relation.follower_id, followed_id: @relation.followed_id)
+      #   relation2.valid?
+      #   expect(relation2.errors[:follower_id]).to include("has already been taken")
+      # end
 
       it "follower_idが同じでもfollowed_idが違うなら保存できる" do
         relation2 = FactoryBot.build(:relationship, follower_id: @relation.follower_id, followed_id: @user1.followed_id)

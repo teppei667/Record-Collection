@@ -1,9 +1,9 @@
-<div class="container text-center mt-5">
+<div class="container text-center mt-5 contact-form">
   <h2>お問い合わせフォーム</h2>
 
   <%= render 'contacts/error_message' %>
 
-  <%= form_with model: @contact, url: confirm_path, local: true do |f| %>
+  <%= form_with model: @contact, url: confirm_contacts_path, local: true do |f| %>
     <div class="form-group form-group-lg mt-5">
       <%= f.text_field :name, autofocus: true, placeholder: "名前", class: 'col-form-label rounded-pill col-sm-6' %>
     </div>

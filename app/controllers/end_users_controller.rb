@@ -4,7 +4,7 @@ class EndUsersController < ApplicationController
 
   def mypage
     @end_user = EndUser.find(params[:id])
-    @records = Record.where(end_user_id: @end_user.id).order(created_at: :desc)
+    @records = @end_user.records.order(created_at: :desc)
   end
 
   def index
@@ -15,8 +15,8 @@ class EndUsersController < ApplicationController
 
   def show
     @end_user = EndUser.find(params[:id])
-    @records = Record.where(end_user_id: @end_user.id).order(created_at: :desc).limit(6)
-    @my_favorites = Favorite.includes([:record]).where(end_user_id: current_end_user.id)
+    @records = @end_user.records.order(created_at: :desc).limit(6)
+    @my_favorites = @end_user.favorites.includes([:record])
     # DM機能
     @room_id = (@end_user.entries.pluck(:room_id) & current_end_user.entries.pluck(:room_id)).first
     @room, @entry = Room.new, Entry.new unless @room_id

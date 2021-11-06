@@ -50,7 +50,7 @@
           <% end %>
         <% end %>
         <div class="text-right">
-          <%= link_to "お気に入り一覧へ", my_favorite_path(@end_user.id), class: "text-white" %>
+          <%= link_to "お気に入り一覧へ", my_favorite_end_user_path(@end_user.id), class: "text-white" %>
         </div>
       <!--他人のプロフィールを見る場合その人のレコードの新着を6件表示する-->
       <% else %>
@@ -61,7 +61,7 @@
           <% end %>
         <% end %>
         <div class="text-right">
-          <p><%= link_to "レコード一覧へ", mypage_path(@end_user.id), class: "text-white" %></p>
+          <p><%= link_to "レコード一覧へ", mypage_end_user_path(@end_user.id), class: "text-white" %></p>
         </div>
 
       <% end %>

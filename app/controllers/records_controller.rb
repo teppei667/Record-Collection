@@ -6,19 +6,13 @@ class RecordsController < ApplicationController
     @records = Record.search(keyword).order(created_at: :desc)
   end
 
-  # def record_search
-  #   @records = Record.record_search(params[:keyword])
-  #   @keyword = params[:keyword]
-  #   render "index"
-  # end
-
   def new
     @record = Record.new
   end
 
   def create
     @record = Record.new(record_params)
-    @record.save ? (redirect_to mypage_path(current_end_user.id)) : (render :new)
+    @record.save ? (redirect_to mypage_end_user_path(current_end_user.id)) : (render :new)
   end
 
   def show
@@ -39,7 +33,7 @@ class RecordsController < ApplicationController
   def destroy
     record = Record.find(params[:id])
     record.destroy
-    redirect_to mypage_path(current_end_user.id)
+    redirect_to mypage_end_user_path(current_end_user.id)
   end
 
   private

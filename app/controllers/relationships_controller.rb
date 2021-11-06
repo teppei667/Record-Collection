@@ -12,12 +12,12 @@ class RelationshipsController < ApplicationController
   end
 
   def followings
-    end_user = EndUser.find(params[:end_user_id])
-    @end_users = end_user.followings
+    @end_user = EndUser.find(params[:end_user_id])
+    @end_users = @end_user.followings
   end
 
   def followers
-    end_user = EndUser.find(params[:end_user_id])
-    @end_users = end_user.followers
+    @end_user = EndUser.find(params[:end_user_id])
+    @end_users = @end_user.followers
   end
 end
