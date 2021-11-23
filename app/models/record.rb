@@ -1,4 +1,5 @@
 class Record < ApplicationRecord
+  default_scope -> { order(created_at: :desc) }
   belongs_to :end_user, optional: true
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

@@ -6,6 +6,8 @@ class EndUser < ApplicationRecord
 
   attachment :profile_image
 
+  default_scope -> { order(created_at: :desc) }
+
   has_many :records, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

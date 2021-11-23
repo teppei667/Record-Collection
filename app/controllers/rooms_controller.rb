@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
       my_room_ids << entry.room.id
     end
     @another_entries =
-      Entry.includes([:room, :end_user]).where(room_id: my_room_ids).where.not(end_user_id: @end_user.id).order(created_at: :desc)
+      Entry.includes([:room, :end_user]).where(room_id: my_room_ids).where.not(end_user_id: @end_user.id)
   end
 
   def show
@@ -34,5 +34,5 @@ class RoomsController < ApplicationController
     room.destroy
     redirect_to request.referer
   end
-  
+
 end

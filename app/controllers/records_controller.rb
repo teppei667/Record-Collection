@@ -3,7 +3,7 @@ class RecordsController < ApplicationController
 
   def index
     keyword = params[:keyword]
-    @records = Record.search(keyword).order(created_at: :desc)
+    @records = Record.search(keyword)
   end
 
   def new
@@ -18,7 +18,7 @@ class RecordsController < ApplicationController
   def show
     @record = Record.find(params[:id])
     @post_comment = PostComment.new
-    @post_comments = PostComment.includes([:record, :end_user]).where(record_id: @record.id).order(created_at: :desc)
+    @post_comments = PostComment.includes([:record, :end_user]).where(record_id: @record.id)
   end
 
   def edit

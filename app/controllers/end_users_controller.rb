@@ -4,18 +4,18 @@ class EndUsersController < ApplicationController
 
   def mypage
     @end_user = EndUser.find(params[:id])
-    @records = @end_user.records.order(created_at: :desc)
+    @records = @end_user.records
   end
 
   def index
     keyword = params[:keyword]
     # end_userの検索結果を表示（current_end_userは表示しない）
-    @end_users = EndUser.search(keyword).where.not(id: current_end_user.id).order(created_at: :desc)
+    @end_users = EndUser.search(keyword).where.not(id: current_end_user.id)
   end
 
   def show
     @end_user = EndUser.find(params[:id])
-    @records = @end_user.records.order(created_at: :desc).limit(6)
+    @records = @end_user.records.limit(6)
     @my_favorites = @end_user.favorites.includes([:record])
     # DM機能
     @room_id = (@end_user.entries.pluck(:room_id) & current_end_user.entries.pluck(:room_id)).first
