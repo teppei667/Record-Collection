@@ -47,7 +47,7 @@ https://docs.google.com/spreadsheets/d/1oxLxzTv8Xu94t2oDhrZNAFuMqxBxsK4tR41LbwBJ
 - IDE：Cloud9
 
 ##開発構成図
-![インフラ構成図](https://drive.google.com/file/d/1jIdlN-yJmbEOJ1BMA0w2o-A9msIGTFCW/view?usp=sharing)
+https://drive.google.com/file/d/1jIdlN-yJmbEOJ1BMA0w2o-A9msIGTFCW/view?usp=sharing
 
 ### 著作権に関して
 - 利用規約を設けて法令を遵守するという趣旨の文言を加える（あくまでもサービスとしての場を提供していて法律は守るという内容）
