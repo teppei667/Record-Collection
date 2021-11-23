@@ -47,6 +47,9 @@ https://docs.google.com/spreadsheets/d/1oxLxzTv8Xu94t2oDhrZNAFuMqxBxsK4tR41LbwBJ
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+##開発構成図
+![インフラ構成図](images/Record＿collection.png "hero")
+
 ### 著作権に関して
 - 利用規約を設けて法令を遵守するという趣旨の文言を加える（あくまでもサービスとしての場を提供していて法律は守るという内容）
 - お問い合わせフォームを設置してすぐに対応できるようにする
