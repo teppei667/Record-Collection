@@ -27,7 +27,7 @@ class Record < ApplicationRecord
     if keyword == ''
       all
     else
-      where(["title like? OR introduction like? OR artist_name like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+      where(["title like? OR introduction like? OR artist_name like? OR genre like? OR release_date like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
     end
   end
 end
